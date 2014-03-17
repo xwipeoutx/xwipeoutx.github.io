@@ -1,0 +1,31 @@
+---
+layout: post
+title: Almost ready to maze
+categories:
+- Programming
+tags:
+- fluid
+- ZAMF
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+author:
+  login: xwipeoutx
+  email: xwipeoutx@gmail.com
+  display_name: Steve
+  first_name: Steve
+  last_name: Leigh
+---
+<p>So I've updated yet another uhh...update. This time around I've neatened things up, fixed some bugs, and added some polish. Here's what's changed:</p>
+<ul>
+<li>Objects now snap-to-grid</li>
+<li>Weapons, walls, zombies and player all properly collide / slide (sliding is a little jumpy atm, but not too bad)</li>
+<li>Fixed some crashing that was happening due to physics objects not being properly removed</li>
+<li>Tried it out on linux - I get segfaults at random, and I have no idea how to debug properly on linux *sigh*
+</ul>
+<p>So the reason I've done the snap-to-grid feature is so I can work on mazing. Try it out now - You can build mazes with magnets or turrets, and you can walk through it. However, that is kind of useless without some shortest path algorithm.</p>
+<p>The best algorithm for this application will be A* - it can find the shortest path to a destination node (the fridge) from every other node. I only need to run it once for every blocking object that gets added, so performance is good, and with proper heuristics, no problemo!</p>
+<p>I was pondering the idea of using fluid dynamics for the pathfinding. See, the pressure stabalisation step of fluid dynamics essentialls "smooths" things out, and makes the fluid run along boundaries. All I'd have to do is initialise every grid position with a vector pointing to the destination node, and run a few jacobian iterations over the domain, and voila! Done! I want to try it out and see how it goes, seems like a novel approach that could work. The main problems I see are with very complex mazes (fluid would virtually stand still due to compression/numerical accuracy), very thin mazes (if walls are on either side of a single cell, it's hard to solve), and U shaped areas (the fluid may end up just going in circles once inside which would be funny, but not good for gameplay). I'll let you know how it goes :)</p>
+<p>The only other thing I've done is update the ZAMF page to have the link to the latest at the top, beneath the picture, rather than the bottom. Woohoo!! As always, click the link on the right to check it out</p>

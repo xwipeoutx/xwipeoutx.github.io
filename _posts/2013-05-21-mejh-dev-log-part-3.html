@@ -1,0 +1,62 @@
+---
+layout: post
+title: '"Mejh" Dev Log - Part 3'
+categories:
+- Programming
+tags:
+- angular
+- d3.js
+- javascript
+- mejh
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+author:
+  login: xwipeoutx
+  email: xwipeoutx@gmail.com
+  display_name: Steve
+  first_name: Steve
+  last_name: Leigh
+---
+<p>I decided it was time to start getting the Mejh to look around and guess their positions.  That got messy pretty fast - I want to be able to swap out the "find the closest stuff to you" part very quickly, which meant creating a World class for the Mejh to live in, and a "Finder" interface, which has a "findNearbyMejh" method.  If I need to optimise to a quad tree or something, it should be rather simple, success!</p>
+<p>Unfortunately, this is where the success starts to run out.  Because the next feature I wanted was to be able to hover over a Mejh, and have nearby Mejh glow.  As much as I trust my tests, I do like to see this progress on the screen, and this is a stepping stone to having an interactive sort of game.  So I go in and start writing tests for the renderer to have interactivity.</p>
+<p>When a circle is clicked it appears selected</p>
+<p>And I've already hit a wall, which is d3.js.  I either haven't found out how to test it easily yet, or it's a difficult API to write tests for.  Or both.  See, d3.js works by selecting a bunch of elements, binding them to data, and specifying behaviour for the nodes, with special cases for entering nodes and exiting nodes.  So the rendering code of last week was:</p>
+<pre class="prettyprint"><code>
+Renderer.prototype = {
+    render: function() {
+        var allMejh = this._world.allMejh();
+        var selection = d3.select(this._canvas)
+            .selectAll('circle')
+            .data(allMejh, function(m) { return m.id; });
+
+        selection.enter().append('circle');
+        selection.exit().remove();
+
+        this._formatter.format(selection);
+    }
+};
+
+Formatter.prototype = {
+    format: function(selection) {
+        selection
+            .attr('r', 3)
+            .attr('cx', function(m) { return m.position().x; })
+            .attr('cy', function(m) { return m.position().y; });
+    }
+};
+
+</code></pre>
+<p>Pretty simple code.  Pain in the butt to test though, because you have to consider the case where a node is entering, where one is exiting, and that each one is formatting.  While the implementation is about 15 lines of code, the tests take up 55 or so.  Of course, lines of code aren't a good way of measuring quality or anything, but it just felt *wrong*.</p>
+<p>Updating for hover code was simple, but writing tests for it first proved even more difficult, as the mouse events are bound to the d3 selection, and it's all very d3-selectiony, not DOM elementy, and gets confusing fast.</p>
+<p>So I thought to myself, let's try out something that's NOT d3.js. I hit up <a href="http://angularjs.org/" title="AngularJS">http://angularjs.org/</a></p>
+<h2>Angular JS</h2>
+<p>In brief AngularJS provides a way of specifying views using markup, and having it bind to a model (ish), with a controller floating around there to give it all some behaviour.  It's fairly impressive I have to admit.  <a href="http://www.egghead.io/">egghead</a> has some fantastic video tutorials on it.</p>
+<p>So I watched a few videos, did some dodgy demo apps with ridiculously simple models and repeat sections and thought "yes, let's go!".  I had trouble doing it in SVG, so I just used divs with text displaying the model position - I figured I could switch out the rendering easy enough.  And that WAS easy enough - it just worked.  Well, as long as I made sure my application attached the world onto some global scope because angular didn't play nice with InjectJS.  I figured I could work on DI integration later, global scope was fine while researching this stuff.  And it's just the world, not a big deal, right?  </p>
+<p>Next was the hover behaviour, and I realised I also had to expose my finder - since what I wanted to do is find the Mejh that are close to the clicked node, and add them to a list of 'nearby' Mejh (or mark them as nearby some other way).  That's 2 in the global scope, but it worked well enough.  I didn't attempt testing just now - still just researching and seeing if it's worth pursuing)</p>
+<p>Time to work on SVG support.  I wire up the same repeat infrastructure, but with circles instead of divs, and run it.  Woo! There they are, a circle for each Mejh.  Just for posterity, I put in 2 more repeats - one for the highlighted one, another for the 'nearby' ones.  Bam, they show, the click events work, too easy!</p>
+<p>But, I don't want 3 repeats.  I want 1 list of Mejh, and the format of it dependant on whether it's selected, nearby, or neither.  Which means a directive - &lt;mejh-circle&gt;.  Test it in HTML, all good, do it in SVG. Nothing. I inspect the DOM using Chrome's dev tools, all the circle elements are there with perfect markup, why isn't it showing?</p>
+<p>Fast forward half an hour or so, turns out my directive makes HtmlUnknownElement instead of SvgCircleElement.  Because that's what happens when you use strings to build SVG - something that Angular wasn't really designed for (understandably).  So I have to throw Angular out for this project, too painful.</p>
+<p>Ahh well, live and learn.  I think what I'll do is make a view model for the world, test the view model, and not test the bit that actually makes DOM elements out of the view model.  Stay tuned!</p>

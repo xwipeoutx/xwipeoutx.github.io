@@ -1,0 +1,59 @@
+---
+layout: post
+title: Robust Dependency Injection in MVC
+categories:
+- Programming
+tags:
+- dependency injection
+- mvc
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+author:
+  login: xwipeoutx
+  email: xwipeoutx@gmail.com
+  display_name: Steve
+  first_name: Steve
+  last_name: Leigh
+---
+<p>I'm of the mindset that absolutely every programmer should have read Mark Seeman's <a href="http://www.manning.com/seemann/" target="_blank">Dependency  Injection in .NET</a>.  Or at the very least, <a href="http://www.manning.com/seemann/DIi.NET_sample_ch04.pdf" target="_blank">the free Chapter 4 excerpt</a> (the best chapter!)</p>
+<p>Perhaps then, I could do a search for resolving dependencies in SignalR clients (such as a hub) without being bombarded with the <a href="http://msdn.microsoft.com/en-us/library/system.web.http.dependencies.idependencyresolver(v=vs.108).aspx" target="_blank">blight that is IDependencyResolver</a>. Though it looks like they've done a bit of work on it since MVC3 (what the book was written for) - adding lifetime scopes and disposal - it's still not really enough. The <a href="http://msdn.microsoft.com/en-us/library/system.web.http.dependencies.idependencyscope(v=vs.108).aspx" target="_blank">IDependencyScope</a> interface lacks the ability to specify child scopes. You want 3 levels (say, application, session, request)?  Too bad.</p>
+<p>To set the record straight, the proper way to do it for MVC is by replacing the implementation of the controller factory with your own dependency resolving one. Observe something like this:</p>
+<pre class="prettyprint"><code>public class DependencyResolvingControllerFactory : DefaultControllerFactory
+{
+    private readonly IContainer _container;
+
+    private readonly Dictionary<IController, ILifetimeScope> _scopesForControllers = new Dictionary<IController, ILifetimeScope>();
+
+    public DependencyResolvingControllerFactory(IContainer container)
+    {
+        _container = container;
+    }
+
+    protected override IController GetControllerInstance(RequestContext requestContext, Type controllerType)
+    {
+        ILifetimeScope scope = _container.BeginLifetimeScope();
+        IController controller = (IController)scope.Resolve(controllerType);
+        _scopesForControllers[controller] = scope;
+
+        return controller;
+    }
+
+    public override void ReleaseController(IController controller)
+    {
+        ILifetimeScope scope = _scopesForControllers[controller];
+        _scopesForControllers.Remove(controller);
+        scope.Dispose();
+
+        base.ReleaseController(controller);
+    }
+}</code></pre>
+<p>and override the default inside Application_Start</p>
+<pre class="prettyprint"><code>ContainerBuilder containerBuilder = new ContainerBuilder();
+containerBuilder.RegisterAssemblyTypes(GetType().Assembly).AsImplementedInterfaces().AsSelf();
+IContainer container = containerBuilder.Build();
+ControllerBuilder.Current.SetControllerFactory(new DependencyResolvingControllerFactory(container));</code></pre>
+<p>Cut down to bare minimum for brevity.  Substitute your own container in as necessary.</p>
+<p>If you're not in MVC Land, and you need to do it with the ASP.NET Web API, <a href="http://blog.ploeh.dk/2012/09/28/DependencyInjectionandLifetimeManagementwithASP.NETWebAPI/">Mark Seeman has the solution</a>, as always.</p>

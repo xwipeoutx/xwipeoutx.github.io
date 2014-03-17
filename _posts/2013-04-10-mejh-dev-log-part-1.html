@@ -1,0 +1,45 @@
+---
+layout: post
+title: '"Mejh" Dev Log - Part 1'
+categories:
+- Programming
+tags:
+- mejh
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+author:
+  login: xwipeoutx
+  email: xwipeoutx@gmail.com
+  display_name: Steve
+  first_name: Steve
+  last_name: Leigh
+---
+<p>I was talking with a coworker the other day, and we lamenting about how bad GPS is in the city - what with all the buildings and reflections messing everything up.  We came to the realization that there are a tonne of phones all around, each with a pretty-good-but-not-perfect idea of where it's located.  So we got all excited about the idea of creating an app which uses all the clients to build mesh-based location service for phones with that app.  It's like bittorrent, for GPS!</p>
+<p>We figured it would only take a few 'seed' nodes (that is, nodes with 100% certainty of their location) to stabilize a large mesh of nodes with fairly-certain distances to neighbouring nodes, and low certainty of its own location.</p>
+<p>Of course, it will be damn difficult to get the distances to neighbouring nodes.  Bluetooth is too low range, wifi signal strength is not very accurate, tone measuring will be ridiculously annoying and GPS cannot be considered - or we wouldn't need a mesh at all!</p>
+<p>Which makes me want to test the idea in a game.  The idea will be a community of "Mejh" (the jh being pronounced as the 'g' in 'genre'), where each member:</p>
+<ol>
+<li>Does not know their own location</li>
+<li>Can make a guess at their location, with a certainty level (or error margin)</li>
+<li>Knows the rough distance and (maybe) direction of nearby Mejh friends</li>
+<li>Can communicate with nearby Mejh to get their calculated positions</li>
+</ol>
+<p>There will also be some sort of oracle-Mejh, which has 100% certainty of location, but must remain stationary.</p>
+<p>The goal of the game will be to expand your colony as large as possible. Find resources, have the Mejh workers mine them and take them back home, in order to build more Mejh (and oracles), to find more resources, ad infinitum.</p>
+<p>I think it's a fairly innovative idea, so we'll see how it turns out! The main thing I like about this idea is it isn't dependent on a highly skilled graphics or sound person - I can really get away with some nicely themed dev art for it - think Darwinia.  </p>
+<p>Not yet sure if I'll throw the code on GitHub, or keep it all to myself, but I'll certainly be keeping this up to date with how development is going.  I'm leaning towards having it open, though.</p>
+<p>As for development, here's a bunch of details about my approach, and some rules I'm setting myself:</p>
+<ul>
+<li>100% browser based.  No server component at all (at least, until I want multiplayer or high score tracking)</li>
+<li>Frequent releases, possibly continuous deployment when I figure out how</li>
+<li>100% DI.  In my 80ish lines of JS at the moment, I have a single 'new' statement.  I plan to keep it that low</li>
+<li>100% TDD.  No code unless I have first written a test for it.  This excludes DI container setup. But this <em>includes</em> DOM manipulation</li>
+<li>Maximum of 4 args per constructor.  No logic beyond assigning instance variables in the constructor</li>
+<li>No jQuery.  I shouldn't need it, and I want to use js without it for once</li>
+<li>A blog post per night of coding.  Two for tonight, because it's my first go :)</li>
+</ul>
+<p>I'm setting pretty stringent rules for DI and testing for a few reasons. There really isn't that much of either in browser-based Javascript going on in the world.  Heck, I doubt there's even that much of it going on in Node.js land. I'm hoping to show how it can be done successfully for a non-trivial project, and perhaps give reference to those who want it (contingent on me opening up the code, of course). I've had a lot of success with DI and TDD in my professional career thus far (DI primarily in C#, TDD in both personal and work projects), but I often get lazy and thing "not a big deal this time..." and regret it later. Especially with constructor parameter counts. I want to push myself further, and this will provider a great opportunity to.</p>
+<p>Stay tuned!</p>

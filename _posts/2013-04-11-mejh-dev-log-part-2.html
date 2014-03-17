@@ -1,0 +1,40 @@
+---
+layout: post
+title: '"Mejh" Dev Log - Part 2'
+categories:
+- Christian
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+author:
+  login: xwipeoutx
+  email: xwipeoutx@gmail.com
+  display_name: Steve
+  first_name: Steve
+  last_name: Leigh
+---
+<p>I've done my first chunk of code, and TDD has blown me away yet again.</p>
+<p>So I created a class for my Mejh dudes, a "placer" to just randomly put them all over the bounding area for now, a renderer to create SVG elements for each of them, and a formatter to give the SVG elements what they need (radius, position, etc.).  And an application to tie it all together.</p>
+<p>Once the application was finished, and I had 100% code coverage and DI everywhere, I created an index.html, set up the DI container how I wanted it, and it worked (well, not quite - I forgot to set cx and cy attributes of the circles, so they all appeared at 0,0).  What's more, the container setup only required 3 manual registrations - everything else was automatic.</p>
+<p>It may not seem like much - a handful of classes which, when put together, do nothing more than display a bunch of random dots on the screen - but having any app "Just Work" feels damn good.</p>
+<p>Here's the libraries I'm using to do the bits:</p>
+<ul>
+<li><a href="https://github.com/soxtoby/InjectJs">InjectJS</a>: DI Container for Javascript.  Written just last week by a coworker, it's brilliant. Highly recommended.
+<li>
+<li><a href="http://d3js.org/">d3js</a>: Library to bind data to DOM elements.  Chose this one because I knew it, and it works well.
+<li>
+<li><a href="https://github.com/xwipeoutx/basil">Basil</a>, <a href="http://chaijs.com/">ChaiJS</a>, <a href="http://sinonjs.org/">SinonJS</a>: Trinity of Javascript testing, I talk about these enough so I'll leave it at that</li>
+</ul>
+<p>And to finish it off, some things I've learnt</p>
+<h2>Dependencies</h2>
+<p>When everything is tested, the list of scripts in test.html match exactly to the list in index.html.  The only difference in the real version is the instantiation and starting of the Application.  Maybe I should be testing my container setup/initial resolve?</p>
+<h2>Testing the DOM is very fiddly</h2>
+<p>I'm using d3 to render the svg circles, and so all my rendering tests have to be integration tests - I can't feasibly mock that thing.  It makes it quite painful to test, especially since pulling attributes out of Svg elements return animated strings, so the easiest way to assert on them is with d3.select(el).attr("r").should.equal("3").  Of course, .attr always returns strings, not numbers... I'm glad I won't have much render code!</p>
+<h2>Slowdowns</h2>
+<p>My environment is slowing me down a lot.  Manually making class methods instead of just pressing alt+enter takes time.  Not having the tests Autorun takes time (I really need to update that chrome extension...). Not being terribly familiar with WebStorm's keyboard shortcuts takes time.  Heck, even not knowing d3/sinon/chai/injectjs off the top of my head slows me down plenty (not to mention the bits and bobs of missing functionality, like array matchers in chai - .deep isn't the answer)!  Hopefully I'll get faster, and nut a lot of this down, but right now, it's annoying.</p>
+<p>So what's next? I think I'll get the Mejh guessing their positions now.  This will mean adding neighbour discovery, and what I think will be a visitor pattern for the Mejh to add different guessing behaviours, not certain yet.  Going mejh.Visit(this._positionGuesser) just seems sensible, and sets me up for adding movement later.</p>
+<p>I'll also spend some time on configuring the IDE to do more stuff for me.</p>
+<p>Until next time!</p>

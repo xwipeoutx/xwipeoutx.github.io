@@ -1,0 +1,65 @@
+---
+layout: page
+title: Basil
+categories: []
+tags: []
+status: publish
+type: page
+published: true
+meta:
+  _edit_last: '2'
+  _wp_page_template: default
+author:
+  login: xwipeoutx
+  email: xwipeoutx@gmail.com
+  display_name: Steve
+  first_name: Steve
+  last_name: Leigh
+---
+<p>An easy to use, easy to read test runner for Javascript</p>
+<p><a href="https://github.com/xwipeoutx/basil">Download Basil @ GitHub</a></p>
+<p>See, a problem with writing unit tests is that setup is hard.  Very hard. Unless you're very diligent with your test fixtures and set up, you can quickly code your tests to be a giant ball of spaghetti.</p>
+<p>Basil fixes this, allowing hierarchical and inline test setup without sacrificing readability.</p>
+<p>Don't believe me? See a <a href="http://stevesspace.com/projects/basil/samples/sample-test.html" target="_blank">sample test</a> for yourself. Or see the handy debug features for when <a href="http://stevesspace.com/projects/basil/samples/sample-output-test.html" target="_blank">tests fail</a></p>
+<p>Features:</p>
+<ul>
+<li><span style="line-height: 14px;">Fully hierarchical test setup</span></li>
+<li>Choose your own mocking and assertion library (I recommend chai.js and sinon.js)</li>
+<li>Instantly inspect the state of the system under test at the time of failure (must have a debugger attached)</li>
+<li>View the code of the failing line of code</li>
+<li><span style="line-height: 1.714285714; font-size: 1rem;">Easy to extend or integrate into build processes or IDEs</span></li>
+<li>Ridiculously easy reading tests - almost reads like a test script</li>
+</ul>
+<pre>describe("Teapot", function() {
+    var teapot = new Teapot();
+
+    it("starts with no water", function() {
+        expect(teapot.isEmpty()).to.be.true;
+    });
+
+    when("no water", function() {
+        when("adding water", function() {
+            teapot.addWater();
+
+            then(function() { expect(teapot.isEmpty()).to.be.false; });
+        });
+    });
+
+    when("has water", function() {
+        teapot.addWater();
+
+        then(function() { expect(teapot.isEmpty()).to.be.false; });
+
+        it("cannot have water added", function() {
+            expect(function() {
+                teapot.addWater();
+            }).to.throw(CannotAddWaterError)
+        });
+
+        when("drained", function() {
+            teapot.drain();
+
+            then(function() { expect(teapot.isEmpty()).to.be.true; });
+        });
+    });
+});</pre>

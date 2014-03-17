@@ -1,0 +1,79 @@
+---
+layout: post
+title: Test Setup
+categories:
+- Programming
+tags:
+- basil
+- javascript
+- testing
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+author:
+  login: xwipeoutx
+  email: xwipeoutx@gmail.com
+  display_name: Steve
+  first_name: Steve
+  last_name: Leigh
+---
+<p>It's painful. You're writing tests for your app, as you should be doing, and the intent of the test is lost in all the test setup.  You have mocks being initialized here, ambient contexts being switched there, test variables being created over here, test fakes being generated over there. There's a lot to it!</p>
+<p>What's more, tests often have a common test setup, so you'll extract that to a method, maybe mark it with a [TestInitialize] attribute or something, and hope that the setup is used across all tests in that fixture.  Of course, this creates a large amount of separation between the test setup and the test assertion, but hey, our tests are <a href="http://en.wikipedia.org/wiki/Don't_repeat_yourself">DRY</a>!</p>
+<p>Of course, people have come up with methods to try and fix this.  One is to create a test fixture per setup, to increase cohesiveness.  Another is to use something like <a href="https://github.com/AutoFixture/AutoFixture">AutoFixture</a>, to inject your setup and test variables. These are well and good, but I don't think they're quite there. It's still not readable enough.</p>
+<p>We need more hierarchical test setup support.  An example is worth much, so here's one in the traditional (flat) style.  Thanks to <a href="http://qunitjs.com/">Qunit </a>for the syntax:</p>
+<pre>var somePerson, sut;
+module("Person Repository", { setup: function() {
+  somePerson = new Person("Foo", "Bar");
+  sut = new PersonRepository();
+});
+
+test("Person can be added to repository", function() {
+  sut.add(somePerson);
+
+  equal(sut.count(), 1);
+});
+
+test("Person can be loaded from repository", function() {
+  sut.add(somePerson);
+  var loadedPerson = sut.load(somePerson.id);
+
+  equal(loadedPerson, somePerson);
+});
+
+test("Person can be deleted from repository", function() {
+  sut.add(somePerson);
+  sut.delete(somePerson);
+
+  equal(sut.count(), 0);
+});</pre>
+<p>Yes, I could have made the default setup add the person, so there's be less stub setup in the functions, but then the intent of the tests would be less clear - the module would need to be "Person Added Tests".</p>
+<p>Compare with input from <a href="https://github.com/xwipeoutx/basil">basil</a></p>
+<pre>describe("Person", function() {
+  var person = new Person("Foo", "Bar");
+  var sut = new PersonRepository();
+
+  when("adding person", function() {
+    sut.add(person);
+
+    then(function() { expect(sut.count()).to.equal(1); });
+
+    when("loading person", function() {
+      var loadedPerson = sut.load(person.id);
+
+      then(function() { expect(loadedPerson).to.equal(person); });
+    });
+
+    when("deleting person", function() {
+      sut.delete(person);
+
+      then(function() { expect(sut.count()).to.equal(0); });
+    });
+  });
+});</pre>
+<p>Isn't that nicer? Of course I cheated and used <a href="http://chaijs.com/">Chai's</a> fluent assertions too (which gives an opportunity for almost test script readability in the test output). This is a much simpler example than the real world too, with only 2 levels of test setup (adding-&gt;loading, adding-&gt;deleting). Hierarchical setup just scales so well.</p>
+<p>What's more, most IDEs allow you to collapse functions - it's very easy to collapse and ignore all the unimportant bits and focus on the rest.</p>
+<p>The pains of this test setup and readability was (and still is) my main motivation for making Basil JS.  Other frameworks required calling specific setup methods, and still didn't support arbitrary nesting.</p>
+<p>My hope is to have these sorts of features available in other languages - I'd love to see a similar approach in C#, for example.  Maybe that'll be my next project.</p>
+<p>Expect to see some screencasts highlighting the usage of basil in the near future.</p>

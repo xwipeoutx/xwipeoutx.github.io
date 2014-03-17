@@ -1,0 +1,109 @@
+---
+layout: page
+title: DirectX Volleyball
+categories: []
+tags: []
+status: publish
+type: page
+published: true
+meta:
+  _edit_last: '2'
+  _wp_page_template: default
+author:
+  login: xwipeoutx
+  email: xwipeoutx@gmail.com
+  display_name: Steve
+  first_name: Steve
+  last_name: Leigh
+---
+<p><strong>Note:</strong> Development on this project has ceased, as the game simply was not fun.</p>
+<p>
+This started off as my first dabbling in DirectX programming. I started with a few tutorials to learn the basics, then went on to develop a simple and easy to manage game engine from that.</p>
+<p>
+However, as things always seem to when dabbling, it grew and grew. As I went, I refined and refactored clunky pieces of code and decided to make a goal of creating a 3 dimensional version of <a href="http://en.wikipedia.org/wiki/Arcade_Volleyball">Arcade Volleyball</a></p>
+<p>
+The prime purpose of the game was to provide a showcase of skills that I have developed, and also my capacity for learning - most of the techniques employed here have been gleaned from reading journal papers, and going through tutorials - reworking them to work properly within the game engine.</p>
+<h3>Videos</h3>
+<div style="clear:both">
+<div style="float: left; margin-right: 12px">
+Top View<br />
+[flashvideo file="projects/volleyball/videos/topview2.flv" /]
+</div>
+<div style="float: left; margin-right: 12px">
+Top View (with a bug)<br />
+[flashvideo file="projects/volleyball/videos/topview1bug.flv" /]
+</div>
+<div style="float: left; margin-right: 12px">
+Front View<br />
+[flashvideo file="projects/volleyball/videos/frontview.flv" /]
+</div>
+<div style="float: left; margin-right: 12px">
+Collisions (early version)<br />
+[flashvideo file="projects/volleyball/videos/collide1.flv" /]
+</div>
+<div style="float: left; margin-right: 12px">
+All-in-one video<br />
+[flashvideo file="projects/volleyball/videos/all.flv" /]
+</div>
+<div style="clear:both;"></div>
+</div>
+<h3>Techniques</h3>
+<p>A variety of common techniques were used for DirectX Volleyball</p>
+<ul class="withdescriptions">
+<li>Scene Graph
+<p>
+A scene graph is used to organise the objects in the scene. It is completely heirarchical, and objects can be added and removed from the graph quickly and easily.</p>
+</li>
+<li>File Input
+<p>
+The scene graph is capable of loading in models in both .x format (using DirectX native functions) and .3ds format (using a custom developed file parser). These readers preserve material properties and groups. The skeleton and the walls are both in .3ds format. The Monkey head representing the light is in .x format.</p>
+</li>
+<li>Per-Pixel Lighting (Blinn-Phong)
+<p>
+All lighting in the scene is per-pixel, using the Blinn-Phong model. This takes material properties, lighting and camera/model/light positions to calculate the ambient, diffuse and specular light values for the surface. The ball in this demo uses Blinn-Phong lighting.</p>
+</li>
+<li>Normal Mapping
+<p>
+Objects can have normal maps applied to them, which replaces the supplied normals of the mesh, allowing higher detail for objects with little extra calculations, and less polygons. The walls, ceiling and floor in this demo uses normal mapping techniques.</p>
+</li>
+<li>Anisotropic Lighting
+<p>
+Anisotropic lighting has also been implemented. This uses a diffuse and specular map to give the model a wider range of views, while simultaneously cutting down on calculations (although a texture lookup is required). For this version, material properties are still taken into consideration, so a red brushed metal ball can use the same map as a blue ball. The head of the skeleton (the big ball) uses anisotropic lighting.</p>
+</li>
+<li>Omnidirectional Shadow Map
+<p>
+Shadow mapping is a widely known technique for displaying shadows on the screen. A general limitation is that the standard technique only allows for spotlights in 1 direction, not point light sources (omni-directional). <a href="http://http.developer.nvidia.com/GPUGems/gpugems_ch12.html"> Omnidirectional Shadow Mapping</a> has been employed on some of the objects in the scene.</p>
+</li>
+<li>Collision Detection and Response
+<p>
+Collision detection and response has been implemented for planes and spheres, and there has been beginning steps made for ellipsoid collision detection.</p>
+<p>
+All objects (except the monkey head) in the game implement this collision system. The ellipsoid collision on the skeleton is slightly buggy, and can cause the player to get stuck in the wall.</p>
+</li>
+</ul>
+<h3>Yet to be implemented</h3>
+<p>Several effects are planned to be implemented still</p>
+<ul>
+<li>Full working ellipsoid collision</li>
+<li>Improvement on the anisotropic map</li>
+<li>Multiplayer</li>
+<li>HUD (including a scoreboard)</li>
+<li>Dynamic Scene Loader (possibly scripted)</li>
+<li>...and much more!</li>
+</ul>
+<h3>Download Demo</h2>
+<p>
+If the videos do not capture your attention enough, latest snapshots can be found 	<a href="http://stevesspace.com/folio/demos/enginuity/snapshots/">here</a>.</p>
+<p>
+<strong>Controls</strong><br /></p>
+<pre>
+WASD+mouse - move the skeleton around
+Space - jump
+Q - encourage the ball to go up
+1 - turn shadow mapping on or off (this will probably double your performance)
+LMB + WASD/space/c/mouse - move light around (monkey head is the light)
+MMB + WASD/space/c/mouse - move camera around
+RMB - throw a ball
+B - release a crazy stream of balls
+ESC - quit
+</pre></p>

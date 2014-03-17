@@ -1,0 +1,29 @@
+---
+layout: post
+title: 'Rantings of a Microsoft Slave: Part 1 - Initial Reaction'
+categories:
+- General
+tags:
+- .NET
+- Microsoft
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+author:
+  login: xwipeoutx
+  email: xwipeoutx@gmail.com
+  display_name: Steve
+  first_name: Steve
+  last_name: Leigh
+---
+<p>So, I've recently moved to a new job - a job where I'm now to be working in Microsoft products, seemingly only. I'm not kidding - from a complete OSS job in PHP, linux (RHEL and Ubuntu), MySQL using Eclipse, Joomla, vTiger and so on, to a complete .NET/Microsoft centric place: Vista, Outlook, OneNote, VS2008, C#.NET, MSSQL, TFS, IE8 - you name it, Microsoft is the answer</p>
+<p>A few people have said they'd be interested in hearing about the transition from OSS to .NET, and how it stacks up, so I'm starting a web series which I'll update whenever I feel like it. The series may only be 1 long, who knows?  I am struggling to do my best to leave my prejudice at the door but...well, it's not easy :P</p>
+<p>My initial reactions are almost entirely negative. The first "what the?" that jumped out at me was the compilation and deployment process. I dealt wtih PHP, a scripting language. Upload it, and it's there. A web app that required compilation and deployment was relatively new to me, but as I'd dealt in C++ and even C# in desktop apps before, it wasn't a big deal. What WAS a big deal was the speed of the first page load - Easily 5x as long as the compilation process</p>
+<p>Y'see, for some unsightly reason, on the first page load it has to go through and recompile it. The WHOLE application - I think it's JIT compiling it this time around, to change it from the CLR to native code, for speed. It may be that the compilation process in VS just copies the script files, and the asp.net handler needs to compile it. I'm not totally sure, I just know it's a pain in the butt to have to wait 5 mins between compile and test, especially when dealing with simple web services. Why can't they give us an option for an interpretted mode, which just scripts it. Would certainly make my recompiles easier</p>
+<p>I really, really miss the terminal. Whether it's to grep inside files, check the processes running, hack up a quick test script or simply just navigate the file system, the linux terminal, with those excellent tools brought to us by GNU, is much MUCH nicer than anything windows has thrown at me.  Or, heck, piping to the "less" command. I know, I know, I could use cygwin or gnuwin32, but for anyone who's been even exposed for a brief amount of time to the windows command line (what? I can't change the width?) knows it's not a valid comparison.</p>
+<p>So a general feel is that everything is somewhat clunkier. MSDN documentation is stupid to navigate around (doxygen output is quite clean), and usually lacking vital information (custom attributes that you won't expose the keys for? Why?). SVN vs TFS (I really like the TFS job list support/integration, but damn it's slow, and why doesn't double click open up my merge editor? And don't get me started on the in built editor...). Getting the latest .csproj file (if someone has added a file, for example) means I need to re-import the project. Fair enough. Why does that take forever? It's really not that big.</p>
+<p>Finally, the fact that it's closed source. I has some problems with Joomla sessions and SSO previously. I was able to trace through the code to fully understand what it was doing and get it solved. I am currently having some trouble with a .NET library feature that's not exposing internal calculations I need for the UI. Oh well, nothing I can do about it. Unless it reflects...</p>
+<p>It's just a lot of little things that makes me feel that the solutions offered are about 90% done. Ideas that work well, that just aren't executed. What confuses me is how MS developers are ok with the sub-par developer support - don't they use this stuff daily?</p>
+<p>Oh, linux, how I miss thee. And you, LGPL, with your open code and navigatable (if sometimes lacking) documentation. And you, eclipse, with your perspectives and myriad of plugins</p>

@@ -1,0 +1,94 @@
+---
+layout: post
+title: Asynchronous Tests and Javascript
+categories:
+- Programming
+tags:
+- async
+- javascript
+- testing
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+author:
+  login: xwipeoutx
+  email: xwipeoutx@gmail.com
+  display_name: Steve
+  first_name: Steve
+  last_name: Leigh
+---
+<p>A lot of Javascript unit testing frameworks out there provide an "asynchronous testing" feature, seemingly to get around the issue of testing things that use setTimeout, or uses xhr.  The idea being if you want to test code like this, you can:</p>
+<pre class="prettyprint"><code>function setFoo() {
+  setTimeout(function() { 
+    window.foo = 'bar';
+  }, 2000);
+}</code></pre>
+<p>Replace setTimeout with $.ajax if you must, it amounts to the same thing.</p>
+<p>Obviously the following test won't work, since it needs a 2 second break:</p>
+<pre class="prettyprint"><code language="javascript">setFoo();
+window.foo.should.equal('bar');</code></pre>
+<p>Qunit gets around this by having a stop() and start() call</p>
+<pre class="prettyprint"><code>setFoo();
+stop();
+setTimeout(function() {
+  start();
+  window.foo.should.equal('bar');
+}, 2000);</code></pre>
+<p>Jasmine has a similar thing, but with a waitsFor function</p>
+<pre class="prettyprint"><code>runs(function() { 
+  setFoo(); 
+});
+waitsFor(function() { 
+  return window.foo == 'bar'; 
+}, 'window.foo should be set', 2000);
+runs(function() { 
+  window.foo.should.equal('bar'); 
+});</code></pre>
+<p>I don't know about you, but I don't particularly want to have to wait around for 2 seconds to see if this test succeeds. The whole point of unit testing is to get rapid feedback when things break - 2 seconds per test is not what I'd call rapid!</p>
+<p>There's a much better way; take advantage of Javascript's ability to replace practically anything - include setTimeout and XmlHttpRequest.  Or, be lazy and let <a href="http://sinonjs.org/docs/#clock">SinonJS</a> do the walking for you:</p>
+<pre class="prettyprint"><code language="javascript">var clock = sinon.useFakeTimers();
+setFoo();
+clock.tick(2000);
+window.foo.should.equal('bar');
+clock.restore();</code></pre>
+<p>Simple! Best of all, it's synchronous! Debugging this sort of test, should you need to, is simple.</p>
+<p>Basil comes with a Sinon adapter, which handles the setup and restoration of the timers for every test, so it boils down to:</p>
+<pre class="prettyprint"><code language="javascript">setFoo();
+this.clock.tick(2000);
+window.foo.should.equal('bar');</code></pre>
+<p>For completeness, if you have web service calls as well:</p>
+<pre class="prettyprint"><code language="javascript">function someRequest() {
+  $.get('http://example.com/getSomeVariable', function(result) {
+    window.foo = result;
+  });
+}</code></pre>
+<p>Using async support (in this case, of Jasmine):</p>
+<pre class="prettyprint"><code language="javascript">runs(function() { 
+  someRequest(); 
+});
+waitsFor(function() { 
+  window.foo != undefined; 
+}, 'foo should be set', 1000);
+runs(function() {
+  window.foo.should.equal('server result');
+});</code></pre>
+<p>This bit actually has a few big problems, I'm not sure how people get around this:<br />
+1) What timeout should I use for waitsFor? What is a reasonable amount of time?<br />
+2) How do I know what the server returns? Why do I even care?<br />
+3) I cannot run this test locally (from a file:// URL) - it has a hard dependency on my web app running, which may not be desirable</p>
+<p>So, let's let SinonJS do the heavy lifting</p>
+<pre class="prettyprint"><code language="javascript">var fakeServer = sinon.fakeServer.create();
+fakeServer.respondWith('http://example.com/getSomeVariable', 'fake server content');
+someRequest();
+  
+window.foo.should.be.undefined;
+
+fakeServer.respond();
+
+window.foo.should.equal('fake server content');
+
+fakeServer.restore();</code></pre>
+<p>Again, Basil can take away the create() and restore() of the fake server, making it a whole lot leaner.  </p>
+<p>This test no longer has any connectivity constraints or timeout dilemmas and enabled control over expected return values.</p>

@@ -1,0 +1,75 @@
+---
+layout: page
+title: Fluidic
+categories: []
+tags: []
+status: publish
+type: page
+published: true
+meta:
+  _edit_last: '2'
+  _wp_page_template: default
+author:
+  login: admin
+  email: xwipeoutx+blogadmin@gmail.com
+  display_name: admin
+  first_name: ''
+  last_name: ''
+---
+<p><img src="http://stevesspace.com/projects/fluid/images/chimney.png" alt="Chimney Fluid Simulation" width="254" style="border: 0px none ; padding: 10px; float: right;" /></p>
+<p>
+In Semester 1, 2008 I completed a Real-Time 3D Fluid simulation, which solves the Navier-Stokes equations in real time. The project was implemented in C++, OpenGL and Cg. It simulates the fluid or gas entirely on the GPU, which is fast enough to be used inside a game.</p>
+<p>
+On the right are a few videos showcasing the end results of this simulation. It could be inserted as a node in a scene graph quite easily, with minimal recoding required.</p>
+<p>
+The smoke is rendered using a simple raycasting technique. It will only perform the raycast on visible portions of the fluid volume, and the fluid blends in appropriately with its surroundings.</p>
+<p>
+Small steps have been made in making in react to light properly, though this is currently limited to a directional light.</p>
+<h3>Download Demo and Source</h3>
+<p>
+If the videos are not enough to capture your attention enough,<br />
+<a href="http://stevesspace.com/projects/fluid/demo/">grab the demo</a> or <a href="http://code.google.com/p/fluidic">go to the Fluidic project page</a>.</p>
+<p>
+<strong>Controls</strong></p>
+<pre>Space: switch between camera mode and inject mode
+Q: Quit
+G: Perturb to a circular vortex
+G: Inject Gridded Ink
+[ and ]: Change X Size
+; and ': Change Y Size
+. and /: Change Z Size
+(inject mode)
+  Click+Drag: inject smoke (colour depends on button pressed)
+(camera mode)
+  WASD + Mouse: Move around
+</pre></p>
+<h2>Videos</h2>
+<p>Videos also available <a href="http://au.youtube.com/xwipeoutx85">on my YouTube page</a>.</p>
+<p><div style="float: left; margin-right: 12px;">
+3D with boundaries<br />
+[flashvideo file="projects/fluid/videos/greytall2.flv" /]
+</div>
+<div style="float: left; margin-right: 12px;">
+3D no boundaries<br />
+[flashvideo file="projects/fluid/videos/greytallnobound1.flv" /]
+</div>
+<div style="float: left; margin-right: 12px;">
+3d occluded, no boundaries<br />
+[flashvideo file="projects/fluid/videos/behindball1.flv" /]
+</div>
+<div style="float: left; margin-right: 12px;">
+3D with movement<br />
+[flashvideo file="projects/fluid/videos/fluid3dmovement.flv" /]
+</div>
+<div style="float: left; margin-right: 12px;">
+2D Red vs Blue<br />
+[flashvideo file="projects/fluid/videos/redvsblue.flv" /]
+</div>
+<div style="float: left; margin-right: 12px;">
+2D burning down the house (chimney smoke)<br />
+[flashvideo file="projects/fluid/videos/BurningHouse.flv" /]
+</div>
+<div style="float: left; margin-right: 12px;">
+2D boundary interaction<br />
+[flashvideo file="projects/fluid/videos/FluidBoundaries.flv" /]
+</div></p>
