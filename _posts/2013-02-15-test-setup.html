@@ -23,7 +23,8 @@ author:
 <p>What's more, tests often have a common test setup, so you'll extract that to a method, maybe mark it with a [TestInitialize] attribute or something, and hope that the setup is used across all tests in that fixture.  Of course, this creates a large amount of separation between the test setup and the test assertion, but hey, our tests are <a href="http://en.wikipedia.org/wiki/Don't_repeat_yourself">DRY</a>!</p>
 <p>Of course, people have come up with methods to try and fix this.  One is to create a test fixture per setup, to increase cohesiveness.  Another is to use something like <a href="https://github.com/AutoFixture/AutoFixture">AutoFixture</a>, to inject your setup and test variables. These are well and good, but I don't think they're quite there. It's still not readable enough.</p>
 <p>We need more hierarchical test setup support.  An example is worth much, so here's one in the traditional (flat) style.  Thanks to <a href="http://qunitjs.com/">Qunit </a>for the syntax:</p>
-<pre>var somePerson, sut;
+{% highlight js %}
+var somePerson, sut;
 module("Person Repository", { setup: function() {
   somePerson = new Person("Foo", "Bar");
   sut = new PersonRepository();
@@ -47,10 +48,12 @@ test("Person can be deleted from repository", function() {
   sut.delete(somePerson);
 
   equal(sut.count(), 0);
-});</pre>
+});
+{% endhighlight %}
 <p>Yes, I could have made the default setup add the person, so there's be less stub setup in the functions, but then the intent of the tests would be less clear - the module would need to be "Person Added Tests".</p>
 <p>Compare with input from <a href="https://github.com/xwipeoutx/basil">basil</a></p>
-<pre>describe("Person", function() {
+{% highlight js %}
+describe("Person", function() {
   var person = new Person("Foo", "Bar");
   var sut = new PersonRepository();
 
@@ -71,7 +74,8 @@ test("Person can be deleted from repository", function() {
       then(function() { expect(sut.count()).to.equal(0); });
     });
   });
-});</pre>
+});
+{% endhighlight %}
 <p>Isn't that nicer? Of course I cheated and used <a href="http://chaijs.com/">Chai's</a> fluent assertions too (which gives an opportunity for almost test script readability in the test output). This is a much simpler example than the real world too, with only 2 levels of test setup (adding-&gt;loading, adding-&gt;deleting). Hierarchical setup just scales so well.</p>
 <p>What's more, most IDEs allow you to collapse functions - it's very easy to collapse and ignore all the unimportant bits and focus on the rest.</p>
 <p>The pains of this test setup and readability was (and still is) my main motivation for making Basil JS.  Other frameworks required calling specific setup methods, and still didn't support arbitrary nesting.</p>

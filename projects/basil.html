@@ -30,7 +30,8 @@ author:
 <li><span style="line-height: 1.714285714; font-size: 1rem;">Easy to extend or integrate into build processes or IDEs</span></li>
 <li>Ridiculously easy reading tests - almost reads like a test script</li>
 </ul>
-<pre>describe("Teapot", function() {
+{% highlight js %}
+describe("Teapot", function() {
     var teapot = new Teapot();
 
     it("starts with no water", function() {
@@ -62,4 +63,5 @@ author:
             then(function() { expect(teapot.isEmpty()).to.be.true; });
         });
     });
-});</pre>
+});
+{% endhighlight %}

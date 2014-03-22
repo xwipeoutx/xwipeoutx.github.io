@@ -19,12 +19,13 @@ author:
   display_name: Steve
   first_name: Steve
   last_name: Leigh
+alias: /mejh-dev-log-part-3/
 ---
 <p>I decided it was time to start getting the Mejh to look around and guess their positions.  That got messy pretty fast - I want to be able to swap out the "find the closest stuff to you" part very quickly, which meant creating a World class for the Mejh to live in, and a "Finder" interface, which has a "findNearbyMejh" method.  If I need to optimise to a quad tree or something, it should be rather simple, success!</p>
 <p>Unfortunately, this is where the success starts to run out.  Because the next feature I wanted was to be able to hover over a Mejh, and have nearby Mejh glow.  As much as I trust my tests, I do like to see this progress on the screen, and this is a stepping stone to having an interactive sort of game.  So I go in and start writing tests for the renderer to have interactivity.</p>
 <p>When a circle is clicked it appears selected</p>
 <p>And I've already hit a wall, which is d3.js.  I either haven't found out how to test it easily yet, or it's a difficult API to write tests for.  Or both.  See, d3.js works by selecting a bunch of elements, binding them to data, and specifying behaviour for the nodes, with special cases for entering nodes and exiting nodes.  So the rendering code of last week was:</p>
-<pre class="prettyprint"><code>
+{% highlight js %}
 Renderer.prototype = {
     render: function() {
         var allMejh = this._world.allMejh();
@@ -47,8 +48,8 @@ Formatter.prototype = {
             .attr('cy', function(m) { return m.position().y; });
     }
 };
+{% endhighlight %}
 
-</code></pre>
 <p>Pretty simple code.  Pain in the butt to test though, because you have to consider the case where a node is entering, where one is exiting, and that each one is formatting.  While the implementation is about 15 lines of code, the tests take up 55 or so.  Of course, lines of code aren't a good way of measuring quality or anything, but it just felt *wrong*.</p>
 <p>Updating for hover code was simple, but writing tests for it first proved even more difficult, as the mouse events are bound to the d3 selection, and it's all very d3-selectiony, not DOM elementy, and gets confusing fast.</p>
 <p>So I thought to myself, let's try out something that's NOT d3.js. I hit up <a href="http://angularjs.org/" title="AngularJS">http://angularjs.org/</a></p>

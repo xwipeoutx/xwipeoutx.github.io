@@ -57,6 +57,22 @@ a:hover {
 .post-contents {
 }
 
+.page {
+    padding-bottom: 1em;
+    border-bottom: 1px dotted #DDD;
+    margin-bottom: 0.5em;
+}
+
+.page-title {
+    font-size: 1.5em;
+}
+
+.highlight {
+    padding: 0.3em;
+    border: 1px solid #e5e5e5;
+    background: #fbfbfb;
+}
+
 /* Theme */
 #title-link {
     font-size: 1em;
@@ -75,6 +91,10 @@ a:hover {
 .top-menu-item {
     text-transform: uppercase;
     color: #444444;
+    margin-right: 2em;
+}
+.top-menu-item:hover {
+    color: #21759b
 }
 
 /*****************************************************************************/
