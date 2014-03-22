@@ -1,4 +1,4 @@
-/* Global Reset */
+/* RESET */
 * {
     margin: 0;
     padding: 0;
@@ -9,14 +9,12 @@ html, body {
 }
 
 body {
-    background-color: #FFF;
     font-family: "Open Sans", Helvetica, Arial, sans-serif;
-    font-size: small;
-    text-align: center;
+    color: #444;
 }
 
 h1 {
-    margin-bottom: 1em;
+    margin-bottom: 0.2em;
 }
 
 p {
@@ -24,18 +22,60 @@ p {
 }
 
 a {
-    color: #00a;
+    text-decoration: none;
+    color: #21759b
 }
 
 a:hover {
-    color: #000;
+    color: #0f3647;
 }
 
-a:visited {
-    color: #00a;
+/** Layout **/
+
+#site {
+    padding: 1.5em;
 }
 
+#masthead {
+    margin-bottom: 1.5em;
+}
 
+/* Post */
+.post {
+    padding-bottom: 1em;
+    border-bottom: 1px dotted #DDD;
+    margin-bottom: 0.5em;
+}
+
+.post-title {
+    font-size: 1.5em;
+}
+
+.post-date {
+}
+
+.post-contents {
+}
+
+/* Theme */
+#title-link {
+    font-size: 1em;
+    color: #444444;
+}
+
+/* Top Menu Module */
+#top-menu {
+    border-top: 1px solid #ededed;
+    border-bottom: 1px solid #ededed;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+}
+
+.top-menu-item {
+    text-transform: uppercase;
+    color: #444444;
+}
 
 /*****************************************************************************/
 /*

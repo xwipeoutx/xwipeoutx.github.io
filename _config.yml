@@ -1,4 +1,9 @@
 name: Steve's Space
+tag: satisfying all your stevesspace.com needs for over a millennia
 markdown: redcarpet
 pygments: false
 encoding: UTF-8
+
+top-menu:
+  - url:  /
+    text: Home

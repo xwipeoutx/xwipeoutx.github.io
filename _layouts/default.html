@@ -16,17 +16,20 @@
 
 </head>
 <body>
-<div class="site">
-    <div class="header">
-        <h1 class="title">
-            <a href="/" id="title-link">{{ site.name }}</a>
+<div id="site">
+    <div id="header">
+        <div id="masthead">
+            <h1 id="title">
+                <a href="/" id="title-link">{{ site.name }}</a>
+            </h1>
+            {{ site.tag }}
+        </div>
 
-            <div id="title-tag-line">{{ site.tag }}</div>
-        </h1>
-
-        {% for item in site.menu %}
-            {{ item }}
+        <div id="top-menu">
+        {% for item in site.top-menu %}
+            <a class="top-menu-item" href="{{ item.url }}">{{ item.text }}</a>
         {% endfor %}
+        </div>
     </div>
 
     {{ content }}
@@ -34,15 +37,7 @@
     <div class="footer">
         <div class="contact">
             <p>
-                Your Name<br/>
-                What You Are<br/>
-                you@example.com
-            </p>
-        </div>
-        <div class="contact">
-            <p>
                 <a href="https://github.com/xwipeoutx">github.com/xwipeoutx</a><br/>
-                <a href="https://twitter.com/xwipeoutx85">twitter.com/xwipeoutx85</a><br/>
             </p>
         </div>
     </div>

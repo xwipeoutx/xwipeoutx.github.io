@@ -1,13 +1,20 @@
 ---
 layout: default
-title: Steve's Space &#58;&#58; satisfying your stevesspace.com needs for over a millenia
+title: Steve's Space
 ---
 
 <div id="home">
-  <h1>Blog Posts</h1>
-  <ul class="posts">
-    {% for post in site.posts %}
-      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+  <div class="posts">
+    {% for post in site.posts limit:5 %}
+      <div class="post">
+        <a class="post-title" href="{{ post.url }}">
+            {{ post.title }}
+        </a>
+        <div class="post-date">{{ post.date | date_to_string }}</div>
+          <div class="post-contents">
+              {{ post.content }}
+          </div>
+      </div>
     {% endfor %}
-  </ul>
+  </div>
 </div>
