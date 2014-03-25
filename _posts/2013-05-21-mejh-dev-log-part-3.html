@@ -8,17 +8,6 @@ tags:
 - d3.js
 - javascript
 - mejh
-status: publish
-type: post
-published: true
-meta:
-  _edit_last: '2'
-author:
-  login: xwipeoutx
-  email: xwipeoutx@gmail.com
-  display_name: Steve
-  first_name: Steve
-  last_name: Leigh
 alias: /mejh-dev-log-part-3/
 ---
 <p>I decided it was time to start getting the Mejh to look around and guess their positions.  That got messy pretty fast - I want to be able to swap out the "find the closest stuff to you" part very quickly, which meant creating a World class for the Mejh to live in, and a "Finder" interface, which has a "findNearbyMejh" method.  If I need to optimise to a quad tree or something, it should be rather simple, success!</p>

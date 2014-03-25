@@ -7,17 +7,7 @@ tags:
 - OpenAL
 - Sound
 - ZAMF
-status: publish
-type: post
-published: true
-meta:
-  _edit_last: '2'
-author:
-  login: xwipeoutx
-  email: xwipeoutx@gmail.com
-  display_name: Steve
-  first_name: Steve
-  last_name: Leigh
+alias: /sound-does-help/
 ---
 <p>So, I spent today wasting time playing tower defense, and writing a sound manager to plug in to my engine.</p>
 <p>The way it currently it works is simple. The sound manager has a play sound method, which takes a wav filename as a parameter. This method loops through all the current buffers, and compares the file names, to see if they're the same. If it's not the same, it creates a new buffer, which contains the information to play the file. It then loop though all the sources and tries to find one that is currently not busy playing something. If it can't find one it also creats a new source.</p>

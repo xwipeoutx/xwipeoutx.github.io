@@ -6,17 +6,7 @@ categories:
 tags:
 - dependency injection
 - mvc
-status: publish
-type: post
-published: true
-meta:
-  _edit_last: '2'
-author:
-  login: xwipeoutx
-  email: xwipeoutx@gmail.com
-  display_name: Steve
-  first_name: Steve
-  last_name: Leigh
+alias: /robust-dependency-injection-in-mvc/
 ---
 <p>I'm of the mindset that absolutely every programmer should have read Mark Seeman's <a href="http://www.manning.com/seemann/" target="_blank">Dependency  Injection in .NET</a>.  Or at the very least, <a href="http://www.manning.com/seemann/DIi.NET_sample_ch04.pdf" target="_blank">the free Chapter 4 excerpt</a> (the best chapter!)</p>
 <p>Perhaps then, I could do a search for resolving dependencies in SignalR clients (such as a hub) without being bombarded with the <a href="http://msdn.microsoft.com/en-us/library/system.web.http.dependencies.idependencyresolver(v=vs.108).aspx" target="_blank">blight that is IDependencyResolver</a>. Though it looks like they've done a bit of work on it since MVC3 (what the book was written for) - adding lifetime scopes and disposal - it's still not really enough. The <a href="http://msdn.microsoft.com/en-us/library/system.web.http.dependencies.idependencyscope(v=vs.108).aspx" target="_blank">IDependencyScope</a> interface lacks the ability to specify child scopes. You want 3 levels (say, application, session, request)?  Too bad.</p>

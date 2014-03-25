@@ -7,17 +7,7 @@ tags:
 - basil
 - javascript
 - testing
-status: publish
-type: post
-published: true
-meta:
-  _edit_last: '2'
-author:
-  login: xwipeoutx
-  email: xwipeoutx@gmail.com
-  display_name: Steve
-  first_name: Steve
-  last_name: Leigh
+alias: /test-setup/
 ---
 <p>It's painful. You're writing tests for your app, as you should be doing, and the intent of the test is lost in all the test setup.  You have mocks being initialized here, ambient contexts being switched there, test variables being created over here, test fakes being generated over there. There's a lot to it!</p>
 <p>What's more, tests often have a common test setup, so you'll extract that to a method, maybe mark it with a [TestInitialize] attribute or something, and hope that the setup is used across all tests in that fixture.  Of course, this creates a large amount of separation between the test setup and the test assertion, but hey, our tests are <a href="http://en.wikipedia.org/wiki/Don't_repeat_yourself">DRY</a>!</p>

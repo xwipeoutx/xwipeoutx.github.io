@@ -34,10 +34,13 @@ a:hover {
 
 #site {
     padding: 1.5em;
+    max-width: 800px;
+    margin: auto;
 }
 
 #masthead {
     margin-bottom: 1.5em;
+    white-space: nowrap;
 }
 
 /* Post */
