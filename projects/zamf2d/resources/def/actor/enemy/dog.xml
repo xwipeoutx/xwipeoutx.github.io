@@ -1,0 +1,24 @@
+<actor type="enemy" subtype="dog">
+	<name>Dog</name>
+	<sprite width="1.5" height="0.675">
+		<image type="png" filename="dog.png" />
+		<animation columns="2" rows="4" initialstate="0">
+			<!--
+			<state index="0" startframe="0" frames="4" fps="8">Walking Right</state>
+			<state index="1" startframe="4" frames="4" fps="8">Walking Left</state>
+			
+			<state index="0" x="0" y="0" w="1.5" h="0.675" srcw="0.5" srch="0.25" frames="4" fps="8">Walking Right</state>
+			<state index="1" x="0" y="0.5" w="1.5" h="0.675" srcw="0.5" srch="0.25" frames="4" fps="8">Walking Left</state>
+			-->
+			
+			<state index="0" x="0" y="0" w="1.5" h="0.675" srcw="0.5" srch="0.25" frames="4" fps="8">Walking</state>
+			<state index="1" x="0" y="0.5" w="1.5" h="0.675" srcw="0.5" srch="0.25" frames="4" fps="16">Attacking</state>
+		</animation>
+	</sprite>
+	<behaviour>
+		<stats hp="10" armour="0" />
+		<movement xvel="5.5" seekplayerdistance="55" accelforce="500" />
+		<physics density="0.2" friction="0.0" restitution="0.0" />
+		<melee damage="2" range="2" animationtime="0.25" hittime="0.15" />
+	</behaviour>
+</actor>

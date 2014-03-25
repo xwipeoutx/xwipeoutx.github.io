@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<Imageset Name="Intro" Imagefile="background.png" NativeHorzRes="640" NativeVertRes="480" AutoScaled="true">
+	<Image Name="Background" XPos="0" YPos="0" Width="640" Height="480" />
+</Imageset>

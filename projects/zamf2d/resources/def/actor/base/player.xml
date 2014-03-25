@@ -1,0 +1,16 @@
+<actor type="base" subtype="player">
+	<name>Player</name>
+	<sprite width="0.6" height="1.6">		
+		<image type="png" filename="player.png" />
+		<animation columns="4" rows="2" initialstate="0">
+			<state index="0" x="0" y="0" w="0.6" h="1.6" srcw="0.25" srch="0.5" frames="4" fps="16">Walking Right</state>
+			<state index="1" x="0" y="0.5" w="0.6" h="1.6" srcw="0.25" srch="0.5" frames="4" fps="16">Walking Left</state>
+		</animation>	
+	</sprite>
+	<stats bagcapacity="6" maxhp="100" />
+	<geometry width="0.6" height="1.6" />
+	<behaviour>
+		<movement maxvel="4" accelforce="200" jumpforce="70" />
+		<physics density="10" friction="0" restitution="0.0" />
+	</behaviour>
+</actor>

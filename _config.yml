@@ -3,14 +3,13 @@ pygments: true
 encoding: UTF-8
 excerpt_separator: ""
 safe: false
+permalink: /:categories/:year/:month/:title/
 
 name: Steve's Space
 tag: satisfying all your stevesspace.com needs for over a millennia
 
 top-menu:
-  - url:  /
-    text: Home
-  - url:  /projects.html
+  - url: /projects.html
     text: Projects
-  - url:  /about-me.html
+  - url: /about-me.html
     text: About Me

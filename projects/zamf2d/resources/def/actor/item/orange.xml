@@ -1,0 +1,7 @@
+<actor type="item" subtype="fruit">
+	<name>Orange</name>
+	<stats points="15" />
+	<sprite width="0.6" height="0.6">
+		<image type="png" filename="orange.png" />
+	</sprite>
+</actor>

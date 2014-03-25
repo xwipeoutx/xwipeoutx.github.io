@@ -1,0 +1,11 @@
+<actor type="projectile" subtype="mothball">
+	<name>Mothball</name>
+	<sprite width="0.4" height="0.4">
+		<image type="png" filename="mothball.png" />
+	</sprite>
+	<behaviour>
+		<stats basedmg="5" dmgmult="1" /> <!-- Damage Multiplier - depends on velocity -->
+		<movement initialvel="7" initialdisplacement="0.9" />
+		<physics density="0.2" friction="1" restitution="0.3" angulardamping="10" lineardamping="0"/>
+	</behaviour>
+</actor>

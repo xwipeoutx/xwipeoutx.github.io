@@ -1,0 +1,16 @@
+<actor type="enemy" subtype="zombie">
+	<name>Zombie</name>
+	<sprite width="0.375" height="1.5">
+		<image type="png" filename="zombie.png" />
+		<animation columns="4" rows="2" initialstate="0">
+			<state index="0" x="0" y="0" w="0.5" h="1.5" srcw="0.25" srch="0.25" frames="4" fps="8">Walking</state>
+			<state index="1" x="0" y="0.25" w="1.0" h="1.5" srcw="0.5" srch="0.25" frames="4" fps="4">Attacking</state>
+		</animation>
+	</sprite>
+	<behaviour>
+		<stats hp="10" armour="0" />
+		<movement xvel="1.5" seekplayerdistance="25" accelforce="500" />
+		<physics density="1" friction="0.0" restitution="0.0" />
+		<melee damage="10" range="0.5" animationtime="1" hittime="0.5" />
+	</behaviour>
+</actor>

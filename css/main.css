@@ -16,6 +16,10 @@ body {
 h1 {
     margin-bottom: 0.2em;
 }
+h2 {
+    margin-top: 1.5em;
+    margin-bottom: 0em;
+}
 
 p {
     margin: 1em 0;
@@ -74,6 +78,7 @@ a:hover {
     padding: 0.3em;
     border: 1px solid #e5e5e5;
     background: #fbfbfb;
+    overflow-x: auto;
 }
 
 /* Theme */
@@ -98,6 +103,9 @@ a:hover {
 }
 .top-menu-item:hover {
     color: #21759b
+}
+.top-menu-item-selected {
+    color: black;
 }
 
 /*****************************************************************************/

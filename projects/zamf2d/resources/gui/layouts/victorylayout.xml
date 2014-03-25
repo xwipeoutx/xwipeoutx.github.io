@@ -1,0 +1,44 @@
+<?xml version="1.0" ?>
+<GUILayout>
+    <Window Type="DefaultWindow" Name="Victory">
+        
+        
+        <!-- Victory Message -->
+        <Window Type="Vanilla/StaticText" Name="Victory/YouWin">
+            <Property Name="UnifiedPosition" Value="{{0.2,0},{0.3,0}}" />
+            <Property Name="UnifiedSize" Value="{{0.6,0},{0.2,0}}" />
+            <Property Name="Text" Value="Oh Noes! You have won!" />
+            <Property Name="FrameEnabled" Value="False" />
+            <Property Name="BackgroundEnabled" Value="False" />
+            <Property Name="Font" Value="Chiller-18" />
+            
+            <Property Name="HorzFormatting" Value="HorzCentred" />
+        </Window>
+        
+        
+        <!-- Dead Message -->
+        <Window Type="Vanilla/StaticText" Name="Victory/PressEscape">
+            <Property Name="UnifiedPosition" Value="{{0.2,0},{0.3,0}}" />
+            <Property Name="UnifiedSize" Value="{{0.6,0},{0.2,0}}" />
+            <Property Name="Text" Value="Press escape to return to the menu." />
+            <Property Name="FrameEnabled" Value="False" />
+            <Property Name="BackgroundEnabled" Value="False" />
+            <Property Name="Font" Value="Chiller-18" />
+            
+            <Property Name="HorzFormatting" Value="HorzCentred" />
+        </Window>
+        
+        <!-- Score -->
+        <Window Type="Vanilla/StaticText" Name="Victory/Score">
+            <Property Name="UnifiedPosition" Value="{{0.1,0},{0.5,0}}" />
+            <Property Name="UnifiedSize" Value="{{0.8,0},{0.5,0}}" />
+            <Property Name="Text" Value="-- Score not set --" />
+            <Property Name="FrameEnabled" Value="False" />
+            <Property Name="BackgroundEnabled" Value="False" />
+            <Property Name="Font" Value="Chiller-72" />
+            
+            <Property Name="HorzFormatting" Value="HorzCentred" />
+        </Window>
+        
+    </Window>
+</GUILayout>

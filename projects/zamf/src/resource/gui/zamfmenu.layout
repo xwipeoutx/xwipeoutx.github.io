@@ -1,0 +1,106 @@
+<?xml version="1.0" ?>
+<GUILayout>
+	<Window Type="DefaultGUISheet" Name="root">
+	
+		<!-- Menu -->
+		<Window Type="DefaultGUISheet" Name="ZAMFMenu">
+			
+			<Window Type="TaharezLook/Button" Name="ZAMFMenu/QuitButton">
+				<Property Name="UnifiedPosition" Value="{{0.4, 0},{0.60, 0}}" />
+				<Property Name="UnifiedSize" Value="{{0.15, 0},{0.05, 0}}" />
+				<Property Name="Text" Value="Quit" />
+			</Window>
+			
+			<Window Type="TaharezLook/Button" Name="ZAMFMenu/PlayButton">
+				<Property Name="UnifiedPosition" Value="{{0.4, 0},{0.4, 0}}" />
+				<Property Name="UnifiedSize" Value="{{0.15, 0},{0.05, 0}}" />
+				<Property Name="Text" Value="Play" />
+			</Window>
+		</Window>
+		
+		<!-- Playing - HUD -->
+		<Window Type="DefaultGUISheet" Name="ZAMFHUD">
+			<!-- Scoreboard -->
+			<Window Type="TaharezLook/StaticText" Name="ZAMFHUD/Scoreboard">
+				<Property Name="UnifiedPosition" Value="{{0.75, 0},{0.9, 0}}" />
+				<Property Name="UnifiedSize" Value="{{0.25, 0},{0.1, 0}}" />
+				<Property Name="Text" Value="Debug Window" />
+				
+				<Property Name="FrameEnabled" Value="False" />
+				<Property Name="HorzFormatting" Value="LeftAligned" />
+				<Property Name="VertFormatting" Value="BottomAligned" />
+			</Window>
+		
+			<!-- Debug Console -->
+			<Window Type="TaharezLook/StaticText" Name="ZAMFHUD/DebugMessage">
+				<Property Name="UnifiedPosition" Value="{{0.0, 0},{0.5, 0}}" />
+				<Property Name="UnifiedSize" Value="{{0.5, 0},{0.5, 0}}" />
+				<Property Name="Text" Value="Debug Window" />
+				
+				<Property Name="Alpha" Value="0.5" />
+				
+				<Property Name="FrameEnabled" Value="False" />
+				<Property Name="Visible" Value="False" />
+				<Property Name="HorzFormatting" Value="LeftAligned" />
+				<Property Name="VertFormatting" Value="BottomAligned" />
+			</Window>
+			
+			<!-- Stats (FPS etc)-->
+			<Window Type="TaharezLook/StaticText" Name="ZAMFHUD/StatsMessage">
+				<Property Name="UnifiedPosition" Value="{{0.8, 0},{0.0, 0}}" />
+				<Property Name="UnifiedSize" Value="{{0.2, 0},{0.02, 0}}" />
+				<Property Name="Text" Value="Stats yo" />
+				
+				<Property Name="Alpha" Value="0.5" />
+				
+				<Property Name="FrameEnabled" Value="False" />
+				<Property Name="BackgroundEnabled" Value="False" />
+				<Property Name="HorzFormatting" Value="RightAligned" />
+				<Property Name="VertFormatting" Value="BottomAligned" />
+			</Window>
+		</Window>
+		
+		<!-- Paused -->
+		<Window Type="DefaultGUISheet" Name="ZAMFPause">
+			<Property Name="Alpha" Value="0.5" />
+		
+			<Window Type="TaharezLook/StaticText" Name="ZAMFPause/PausedMessage">
+				<Property Name="Text" Value="-- Paused Yo --" />
+				
+				<Property Name="FrameEnabled" Value="True" />
+				<Property Name="HorzFormatting" Value="HorzCentred" />
+				<Property Name="HorizontalAlignment" Value="Centre" />
+				<Property Name="VerticalAlignment" Value="Centre" />
+				
+			</Window>
+		</Window>
+		
+		<!-- Dead -->
+		<Window Type="DefaultGUISheet" Name="ZAMFDead">
+			<Property Name="Alpha" Value="0.2" />
+		
+			<Window Type="TaharezLook/StaticText" Name="ZAMFDead/Message">
+				<Property Name="Text" Value="-- Game Over Man. Press Esc. --" />
+				
+				<Property Name="FrameEnabled" Value="True" />
+				<Property Name="HorzFormatting" Value="HorzCentred" />
+				<Property Name="HorizontalAlignment" Value="Centre" />
+				<Property Name="VerticalAlignment" Value="Centre" />
+				
+			</Window>
+			
+			<Window Type="TaharezLook/StaticText" Name="ZAMFDead/Stats">
+				
+				<Property Name="UnifiedPosition" Value="{{0.4, 0},{0.6, 0}}" />
+				<Property Name="UnifiedSize" Value="{{0.2, 0},{0.2, 0}}" />
+			
+				<Property Name="Text" Value="STATS YO" />
+				<Property Name="BackgroundEnabled" Value="False" />
+				
+				<Property Name="FrameEnabled" Value="False" />
+				<Property Name="VerticalAlignment" Value="TopAligned" />
+				
+			</Window>
+		</Window>
+	</Window>
+</GUILayout>

@@ -1,0 +1,98 @@
+<?xml version="1.0" ?>
+<GUILayout>
+    <Window Type="DefaultWindow" Name="Play">
+        
+        <Window Type="Vanilla/StaticText" Name="Play/HUD">
+            <Property Name="UnifiedPosition" Value="{{0.0,0},{0.0,0}}" />
+            <Property Name="UnifiedSize" Value="{{1.0,0},{0.15,0}}" />
+	       	<Property Name="BackgroundEnabled" Value="False" />
+	        <Property Name="FrameEnabled" Value="False" />
+	            
+	        <!-- Score -->
+            <Window Type="Vanilla/StaticText" Name="Play/HUD/Score">
+	            <Property Name="UnifiedPosition" Value="{{0.05,0},{0.0,0}}" />
+	            <Property Name="UnifiedSize" Value="{{0.55,0},{0.9,0}}" />
+	            <Property Name="Text" Value="Score: 0" />
+	            <Property Name="FrameEnabled" Value="False" />
+	            <Property Name="BackgroundEnabled" Value="False" />
+	            <Property Name="Font" Value="Chiller-72" />
+	        </Window>
+	        
+	        
+	        <!-- HP -->
+            <Window Type="Vanilla/StaticText" Name="Play/HUD/HPBar">
+	            <Property Name="UnifiedPosition" Value="{{0.3,0},{0.7,0}}" />
+	            <Property Name="UnifiedSize" Value="{{0.4,0},{0.3,0}}" />
+	            <Property Name="Text" Value="HP: 100%" />
+	            <Property Name="FrameEnabled" Value="True" />
+	            <Property Name="BackgroundEnabled" Value="False" />
+	            <Property Name="Font" Value="Chiller-18" />
+	        </Window>
+	        
+            <Window Type="Vanilla/StaticText" Name="Play/HUD/CurrentHP">
+	            <Property Name="UnifiedPosition" Value="{{0.3,0},{0.7,0}}" />
+	            <Property Name="UnifiedSize" Value="{{0.4,0},{0.3,0}}" />
+	            <Property Name="Text" Value="HP: 100%" />
+	            <Property Name="FrameEnabled" Value="True" />
+	            <Property Name="BackgroundEnabled" Value="True" />
+	            <Property Name="Font" Value="Chiller-18" />
+	        </Window>
+	        
+	        <!-- Inventory -->
+	        <Window Type="DefaultWindow" name="Play/HUD/Inventory">
+	            <Property Name="UnifiedPosition" Value="{{0.6,0},{0.0,0}}" />
+	            <Property Name="UnifiedSize" Value="{{0.3,0},{1.0,0}}" />
+	        	
+	        	<!-- Inventory Spots -->
+	        	<Window Type="Vanilla/StaticImage" Name="Play/HUD/Inventory/Position0">
+            		<Property Name="UnifiedPosition" Value="{{0.0,0},{0.05,0}}" />
+            		<Property Name="UnifiedSize" Value="{{0.15,0},{0.4,0}}" />
+					<Property Name="Image" Value="set:Inventory image:Empty" />
+		            <Property Name="FrameEnabled" Value="False" />
+		            <Property Name="BackgroundEnabled" Value="False" />
+            	</Window>
+            	
+	        	<Window Type="Vanilla/StaticImage" Name="Play/HUD/Inventory/Position1">
+            		<Property Name="UnifiedPosition" Value="{{0.3,0},{0.05,0}}" />
+            		<Property Name="UnifiedSize" Value="{{0.15,0},{0.4,0}}" />
+					<Property Name="Image" Value="set:Inventory image:Empty" />
+		            <Property Name="FrameEnabled" Value="False" />
+		            <Property Name="BackgroundEnabled" Value="False" />
+            	</Window>
+            	
+	        	<Window Type="Vanilla/StaticImage" Name="Play/HUD/Inventory/Position2">
+            		<Property Name="UnifiedPosition" Value="{{0.6,0},{0.05,0}}" />
+            		<Property Name="UnifiedSize" Value="{{0.15,0},{0.4,0}}" />
+					<Property Name="Image" Value="set:Inventory image:Empty" />
+		            <Property Name="FrameEnabled" Value="False" />
+		            <Property Name="BackgroundEnabled" Value="False" />
+            	</Window>
+            	
+	        	<Window Type="Vanilla/StaticImage" Name="Play/HUD/Inventory/Position3">
+            		<Property Name="UnifiedPosition" Value="{{0.0,0},{0.5,0}}" />
+            		<Property Name="UnifiedSize" Value="{{0.15,0},{0.4,0}}" />
+					<Property Name="Image" Value="set:Inventory image:Empty" />
+		            <Property Name="FrameEnabled" Value="False" />
+		            <Property Name="BackgroundEnabled" Value="False" />
+            	</Window>
+            	
+	        	<Window Type="Vanilla/StaticImage" Name="Play/HUD/Inventory/Position4">
+            		<Property Name="UnifiedPosition" Value="{{0.3,0},{0.5,0}}" />
+            		<Property Name="UnifiedSize" Value="{{0.15,0},{0.4,0}}" />
+					<Property Name="Image" Value="set:Inventory image:Empty" />
+		            <Property Name="FrameEnabled" Value="False" />
+		            <Property Name="BackgroundEnabled" Value="False" />
+            	</Window>
+            	
+	        	<Window Type="Vanilla/StaticImage" Name="Play/HUD/Inventory/Position5">
+            		<Property Name="UnifiedPosition" Value="{{0.6,0},{0.5,0}}" />
+            		<Property Name="UnifiedSize" Value="{{0.15,0},{0.4,0}}" />
+					<Property Name="Image" Value="set:Inventory image:Empty" />
+		            <Property Name="FrameEnabled" Value="False" />
+		            <Property Name="BackgroundEnabled" Value="False" />
+            	</Window>
+	        	
+	        </Window>
+        </Window>
+    </Window>
+</GUILayout>
