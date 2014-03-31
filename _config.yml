@@ -7,6 +7,7 @@ permalink: /:year/:month/:title/
 
 name: Steve's Space
 tag: satisfying your stevesspace.com needs for over a millenia
+url: http://stevesspace.com
 
 top-menu:
   - url: /
