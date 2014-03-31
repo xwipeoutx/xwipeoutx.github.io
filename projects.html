@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: page
 title: Projects
 categories: []
 tags: []
@@ -7,7 +7,9 @@ alias: /my-projects/
 ---
 {% for page in site.pages %}
     {% if page.tags contains 'project' %}
-        <a class="page-title" href="{{ page.url }}">{{ page.title }}</a>
+        <h3 class="projects-title">
+            <a href="{{ page.url }}">{{ page.title }}</a>
+        </h3>
         <p>{{ page.summary }}</p>
     {% endif %}
 {% endfor %}

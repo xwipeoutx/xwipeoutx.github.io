@@ -13,5 +13,7 @@ top-menu:
     text: Home
   - url: /projects.html
     text: Projects
+  - url: /archive.html
+    text: Archive
   - url: /about-me.html
     text: About Me
