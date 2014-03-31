@@ -6,33 +6,40 @@
     <title>{{ page.title }} - {{ site.name }}</title>
     <meta name="viewport" content="width=device-width">
 
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:normal,bold,semibold' rel='stylesheet' type='text/css'>
 
-    <!-- syntax highlighting CSS -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+
     <link rel="stylesheet" href="/css/syntax.css">
-
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/main.css">
 
 </head>
 <body>
 <div id="site">
     <div id="header">
-        <div id="masthead">
-            <h1 id="title">
-                <a href="/" id="title-link">{{ site.name }}</a>
-            </h1>
-            {{ site.tag }}
+        <h1>
+            {{ page.title }}
+        </h1>
+        <div id="site-tag">
+            <a href="/" class="stealth-link">
+                {% if page.title == site.name %}
+                    {{ site.tag }}
+                {% else %}
+                    {{ site.name }}: {{ site.tag }}
+                {% endif %}
+            </a>
         </div>
 
         <div id="top-menu">
             {% for item in site.top-menu %}
             <a class="top-menu-item {% if page.url == item.url %}top-menu-item-selected{% endif %}" href="{{ item.url }}">{{ item.text }}</a>
-        {% endfor %}
+            {% endfor %}
         </div>
     </div>
 
-    {{ content }}
+    <div id="content">
+        {{ content }}
+    </div>
 
     <div class="footer">
         <div class="contact">

@@ -7,9 +7,9 @@ alias: /my-projects/
 ---
 {% for page in site.pages %}
     {% if page.tags contains 'project' %}
-        <h3 class="projects-title">
+        <h2 class="projects-title">
             <a href="{{ page.url }}">{{ page.title }}</a>
-        </h3>
-        <p>{{ page.summary }}</p>
+        </h2>
+        <p class="projects-summary">{{ page.summary }}</p>
     {% endif %}
 {% endfor %}

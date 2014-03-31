@@ -2,10 +2,7 @@
 layout: default
 ---
 <div class="post">
-    <a class="post-title" href="{{ page.url }}">
-        {{ page.title }}
-    </a>
-    <div class="post-date">{{ page.date | date_to_string }}</div>
+    <div class="post-date">Published: {{ page.date | date_to_string }}</div>
     <div class="post-contents">
         {{ content }}
     </div>
