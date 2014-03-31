@@ -9,6 +9,8 @@ name: Steve's Space
 tag: satisfying all your stevesspace.com needs for over a millennia
 
 top-menu:
+  - url: /
+    text: Home
   - url: /projects.html
     text: Projects
   - url: /about-me.html
