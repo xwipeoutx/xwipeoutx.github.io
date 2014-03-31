@@ -1,0 +1,7 @@
+Wanna see something freaky? Keep in mind there are NO cookie checks, NO domain checks, NO state checks nothing. Just DOM generation within 1 page.
+
+1) In IE8, in a brand new tab, go to http://stevesspace.com/test/jquery.html
+2) In the same tab, go to http://msn.com
+3) In the same tab, go to http://stevesspace.com/test/jquery.html (copy paste, do NOT hit back)
+
+Result: Different styles! Some inherited styles aren't being applied the 2nd time, when you go to msn.com first. 

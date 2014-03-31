@@ -1,0 +1,29 @@
+body 
+{
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+body .modalPopup 
+{
+  position: fixed !important;
+  left: 100px;
+  top: 100px;
+  z-index: 1000;
+  width: 200px;
+  height: 200px;
+  background: blue !important;
+  border: 1px solid black
+}
+.modalBackground 
+{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 2000px;
+  height: 2000px;
+  z-index: 999;
+  opacity: 0.5;
+  filter: progid:DXImageTransform.Microsoft.Alpha(opacity=50);
+  BACKGROUND-COLOR: #053776
+}

@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=9" />
+    <title>Inner page</title>
+    <style>
+        .pass 
+        {
+            color: green;
+        }
+        .fail
+        {
+            color: red;
+            font-weight: bold;
+        }
+        #quirks-mode
+        {
+            color: #fff;
+            color: f00;
+        }
+        #not-quirks-mode
+        {
+            color: green;
+            color: fff;
+        }
+    </style>
+</head>
+<body>
+    <div>Quirks Mode: <span id="quirks-mode">true</span><span id="not-quirks-mode">false</span></div>
+    <div>Javascript: <span id="scripts-enabled" class="fail">false</span></div>
+    <div>Array map support: <span id="array-map" class="fail">false</span></div>
+    <hr />
+    <div>Doc Mode: <span id="doc-mode"></span></div>
+    <div>Compat Mode: <span id="compat-mode"></span></div>
+    <hr />
+    <div>SVG Circle should render below</div>
+    <svg>
+        <circle cx="50" cy="50" r="50" style="fill: green;"/>
+    </svg>
+</body>
+<script type="text/javascript">
+    document.getElementById('doc-mode').innerHTML += document.documentMode;
+    document.getElementById('compat-mode').innerHTML += document.compatMode;
+
+    document.getElementById('scripts-enabled').innerHTML = 'true';
+    document.getElementById('scripts-enabled').className = 'pass';
+    
+    if (Array.prototype.map) {
+        document.getElementById('array-map').innerHTML = 'true';
+        document.getElementById('array-map').className = 'pass';
+    }
+    </script>
+</html>
+

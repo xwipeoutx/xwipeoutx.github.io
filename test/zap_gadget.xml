@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+<ModulePrefs title="Really Simple Note">
+<Require feature="setprefs"/>
+</ModulePrefs>
+<UserPref name="url" default_value="Type stuff here!" datatype="string"/>
+<Content type="html">
+  <h3>Hi Mum</h3>
+  <div id="container"></div>
+    <script type="text/javascript">
+  document.location.href = "http://google.com";
+    </script>
+     
+</Content>
+</Module>

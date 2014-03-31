@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=9" />
+        <title>Inner page</title>
+        <style>
+            .blue-if-quirks
+            {
+                background-color: 00f;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="blue-if-quirks" id="info">
+            Red = doesn't support Array.map<br />
+            Blue = running in quirks-mode<br />
+            Green = Good!<br />
+            <br />
+        </div>
+        <svg>
+            <circle cx="50" cy="50" r="50" />
+        </svg>
+    </body>
+    <script type="text/javascript">
+        document.getElementById('info').innerHTML += 'Doc Mode: ' + document.documentMode + '<br />';
+        document.getElementById('info').innerHTML += 'Compat Mode: ' + document.compatMode + '<br />';
+        if (Array.prototype.map)
+            document.body.style.background = 'green';
+        else
+            document.body.style.background = 'red';
+    </script>
+</html>

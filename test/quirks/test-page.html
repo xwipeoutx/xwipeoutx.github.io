@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=9" />
+    <title>Inner page</title>
+    <style>
+        .pass 
+        {
+            color: green;
+        }
+        .fail
+        {
+            color: red;
+            font-weight: bold;
+        }
+        #quirks-mode
+        {
+            color: #fff;
+            color: f00;
+        }
+        #not-quirks-mode
+        {
+            color: green;
+            color: fff;
+        }
+    </style>
+</head>
+<body>
+    <div>Mode: <span id="doc-mode"></span> / <span id="compat-mode"></span></div>
+    <div>Quirks Mode: <span id="quirks-mode">true</span><span id="not-quirks-mode">false</span></div>
+    <div>Javascript: <span id="scripts-enabled" class="fail">false</span></div>
+    <div>Language Support: <span id="array-map" class="fail">Array.prototype.map</span> , <span id="console-warn" class="fail">console.warn</span></div>
+    <hr />
+    <span>SVG Circle</span>
+    <svg style="display: inline-block; width: 50px; height: 10px;">
+        <circle cx="5" cy="5" r="5" style="fill: green;"/>
+    </svg>
+</body>
+<script type="text/javascript">
+    document.getElementById('doc-mode').innerHTML += document.documentMode;
+    document.getElementById('compat-mode').innerHTML += document.compatMode;
+
+    document.getElementById('scripts-enabled').innerHTML = 'true';
+    document.getElementById('scripts-enabled').className = 'pass';
+    
+    if (Array.prototype.map)
+        document.getElementById('array-map').className = 'pass';
+    if (window.console && console.warn)
+        document.getElementById('console-warn').className = 'pass';
+
+    </script>
+</html>
+

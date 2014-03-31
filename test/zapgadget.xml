@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+<ModulePrefs title="Zap Gadget">
+  <Require feature="setprefs"/>
+</ModulePrefs>
+<UserPref name="ResourceId" default_value="0" datatype="string"/>
+<Content type="html">     
+<![CDATA[ 
+  <h3>Hi Mum</h3>
+  <div id="container">I Am teh here</div>
+  <script>
+      var prefs = new gadgets.Prefs();
+
+  document.location.href = "http://bitest/ZapBI/Pages/Viewer.aspx?ResourceId="+prefs.getString("ResourceId")
+  </script>     
+]]>
+</Content>
+</Module>
