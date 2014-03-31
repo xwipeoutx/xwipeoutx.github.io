@@ -3,7 +3,7 @@ pygments: true
 encoding: UTF-8
 excerpt_separator: ""
 safe: false
-permalink: /:categories/:year/:month/:title/
+permalink: /:year/:month/:title/
 
 name: Steve's Space
 tag: satisfying all your stevesspace.com needs for over a millennia
