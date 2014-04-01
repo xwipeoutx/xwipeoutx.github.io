@@ -1,7 +1,0 @@
-<actor type="item" subtype="meat">
-	<name>Steak</name>
-	<stats points="1000" />
-	<sprite width="0.8" height="0.8">
-		<image type="png" filename="steak.png" />
-	</sprite>
-</actor>

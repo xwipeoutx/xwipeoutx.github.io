@@ -6,7 +6,7 @@ categories: []
 tags: ['project']
 alias: /my-projects/fluid-simulation/
 ---
-<p><img src="http://stevesspace.com/projects/fluid/images/chimney.png" alt="Chimney Fluid Simulation" width="254" style="border: 0px none ; padding: 10px; float: right;" /></p>
+<img src="/projects/fluid/images/chimney.png" alt="Chimney Fluid Simulation" width="254" style="border: 0px none ; padding: 10px; float: right;" />
 <p>
 In Semester 1, 2008 I completed a Real-Time 3D Fluid simulation, which solves the Navier-Stokes equations in real time. The project was implemented in C++, OpenGL and Cg. It simulates the fluid or gas entirely on the GPU, which is fast enough to be used inside a game.</p>
 <p>
@@ -15,13 +15,17 @@ On the right are a few videos showcasing the end results of this simulation. It 
 The smoke is rendered using a simple raycasting technique. It will only perform the raycast on visible portions of the fluid volume, and the fluid blends in appropriately with its surroundings.</p>
 <p>
 Small steps have been made in making in react to light properly, though this is currently limited to a directional light.</p>
-<h3>Download Demo and Source</h3>
+
+<h2>Videos</h2>
+<iframe width="560" height="315" src="//www.youtube.com/embed/videoseries?list=PLC2CD45DCA17C0D19" frameborder="0" allowfullscreen></iframe>
+
+<h2>Download Demo and Source</h2>
 <p>
-If the videos are not enough to capture your attention enough,<br />
-<a href="http://stevesspace.com/projects/fluid/demo/">grab the demo</a> or <a href="http://code.google.com/p/fluidic">go to the Fluidic project page</a>.</p>
+If the videos are not enough to capture your attention enough, <a href="http://code.google.com/p/fluidic">head to the Fluidic project page</a>.</p>
 <p>
-<strong>Controls</strong></p>
-<pre>Space: switch between camera mode and inject mode
+<h2>Controls</h2></p>
+<pre class="highlight">
+Space: switch between camera mode and inject mode
 Q: Quit
 G: Perturb to a circular vortex
 G: Inject Gridded Ink
@@ -32,6 +36,4 @@ G: Inject Gridded Ink
   Click+Drag: inject smoke (colour depends on button pressed)
 (camera mode)
   WASD + Mouse: Move around
-</pre></p>
-<h2>Videos</h2>
-<iframe width="560" height="315" src="//www.youtube.com/embed/videoseries?list=PLC2CD45DCA17C0D19" frameborder="0" allowfullscreen></iframe>
+</pre>

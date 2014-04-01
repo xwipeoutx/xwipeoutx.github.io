@@ -1,6 +1,0 @@
-<actor type="base" subtype="fridge">
-	<name>Fridge</name>
-	<sprite>
-		<image type="png" filename="fridge.png" />
-	</sprite>
-</actor>
