@@ -3,7 +3,7 @@ layout: post
 title: Jekyll Me This
 categories:
 tags:
-date: 2014-04-01 21:00:00 +1000
+date: 2014-04-01 20:30:00 +1000
 ---
 So, I've moved the blog over to [Jekyll](http://jekyllrb.com/), a static site generator that's pretty well suited to doing blogs,
 if you're a tech person, like myself.  No, this is not an April fool's joke!
