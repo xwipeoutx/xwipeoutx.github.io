@@ -26,6 +26,10 @@ p {
 
 ol,ul {
     margin-left: 3em;
+    margin-bottom: 1em;
+}
+li {
+    margin-bottom: 0.5em;
 }
 
 a {
