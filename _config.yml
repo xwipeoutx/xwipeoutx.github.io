@@ -8,6 +8,7 @@ permalink: /:year/:month/:title/
 name: Steve's Space
 tag: satisfying your stevesspace.com needs for over a millenia
 url: http://stevesspace.com
+github-url: https://github.com/xwipeoutx
 
 top-menu:
   - url: /

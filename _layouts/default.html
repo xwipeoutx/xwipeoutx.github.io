@@ -6,7 +6,8 @@
     <title>{{ page.title }} - {{ site.name }}</title>
     <meta name="viewport" content="width=device-width">
 
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:normal,bold,semibold' rel='stylesheet' type='text/css'>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:normal,bold,semibold" rel="stylesheet" type="text/css">
 
     <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
     <link rel="alternate" type="application/rss+xml" href="{{ site.url }}/feed" title="Steve's Space RSS Feed">
@@ -35,6 +36,8 @@
             {% for item in site.top-menu %}
             <a class="top-menu-item {% if page.url == item.url %}top-menu-item-selected{% endif %}" href="{{ item.url }}">{{ item.text }}</a>
             {% endfor %}
+            <a class="top-menu-item top-menu-item-icon" href="/feed.xml" target="_blank"><i class="fa fa-rss-square"></i></a>
+            <a class="top-menu-item top-menu-item-icon" href="{{ site.github-url }}" target="_blank"><i class="fa fa-github-square"></i></a>
         </div>
     </div>
 
@@ -43,10 +46,11 @@
     </div>
 
     <div class="footer">
-        <div class="contact">
-            <p>
-                <a href="https://github.com/xwipeoutx">github.com/xwipeoutx</a><br/>
-            </p>
+        <div class="copyright">
+            &copy; 2014 Steve Leigh with help from
+            <a target="_blank" href="http://jekyllrb.com/">Jekyll</a>,
+            <a target="_blank" href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a> and
+            <a target="_blank" href="https://www.google.com/fonts">Google Fonts</a>
         </div>
     </div>
 </div>
