@@ -95,6 +95,25 @@ h2 {
     font-size: 1.5em;
 }
 
+/* Comment */
+
+.comment {
+    margin-top: 1em;
+    padding: 0.5em;
+    background: #f0f0f0;
+    border: 1px solid #ddd;
+}
+
+.comment-author {
+    font-weight: bold;
+}
+.comment-date {
+    font-size: 0.9em;
+    color: #888;
+}
+
+/* Misc */
+
 .highlight {
     padding: 0.3em;
     border: 1px solid #e5e5e5;

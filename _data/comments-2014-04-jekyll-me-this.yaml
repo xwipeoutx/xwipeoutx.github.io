@@ -1,0 +1,6 @@
+- author: Steve
+  date: 2014-04-02 10:00 +1000
+  contents: |
+    I've added comment support to the site now! See [my post](/2014/04/static-jekyll-comments) to see how I went about it.
+
+    You'll note that it has *markdown* support too! I'll moderating it though, so don't try any dirty hacks...

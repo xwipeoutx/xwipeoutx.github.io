@@ -3,18 +3,18 @@ layout: default
 title: Steve's Space
 subtitle:
 ---
-
 <div id="home">
   <div class="posts">
     {% for post in site.posts limit:5 %}
       <div class="post">
-        <a class="post-title" href="{{ post.url }}">
+          <a class="post-title" href="{{ post.url }}">
             {{ post.title }}
         </a>
         <div class="post-date">{{ post.date | date_to_string }}</div>
           <div class="post-contents">
               {{ post.content }}
           </div>
+
       </div>
     {% endfor %}
   </div>
