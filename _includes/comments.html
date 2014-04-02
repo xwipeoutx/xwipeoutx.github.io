@@ -1,14 +1,15 @@
+<div class="comments">
+    <h2>Comments</h2>
 
-<p>Add a comment! <a href="https://github.com/xwipeoutx/xwipeoutx.github.io/issues/new">Raise an issue</a> and I'll make it a comment!</p>
+    {% capture commentid %}comments{{ page.id | replace: '/','-'}}{% endcapture %}
 
-<h2>Comments</h2>
+    {% for comment in site.data[commentid] %}
+        <div class="comment">
+            <div class="comment-author">{{ comment.author }}</div>
+            <div class="comment-contents">{{ comment.contents | markdownify }}</div>
+            <div class="comment-date">{{ comment.date | date: '%a %d %B %Y, %H:%M' }} AEST</div>
+        </div>
+    {% endfor %}
 
-{% capture commentid %}comments{{ page.id | replace: '/','-'}}{% endcapture %}
-
-{% for comment in site.data[commentid] %}
-    <div class="comment">
-        <div class="comment-author">{{ comment.author }}</div>
-        <div class="comment-contents">{{ comment.contents | markdownify }}</div>
-        <div class="comment-date">{{ comment.date | date: '%a %d %B %Y, %H:%M' }} AEST</div>
-    </div>
-{% endfor %}
+    <p>Add a comment! <a href="https://github.com/xwipeoutx/xwipeoutx.github.io/issues/new">Raise an issue</a> and I'll make it a comment!</p>
+</div>

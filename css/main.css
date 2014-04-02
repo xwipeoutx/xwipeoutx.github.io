@@ -96,7 +96,6 @@ h2 {
 }
 
 /* Comment */
-
 .comment {
     margin-top: 1em;
     padding: 0.5em;
@@ -119,6 +118,7 @@ h2 {
     border: 1px solid #e5e5e5;
     background: #fbfbfb;
     overflow-x: auto;
+    margin-bottom: 1em;
 }
 
 .archive-year {
