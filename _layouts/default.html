@@ -46,8 +46,8 @@
             {% for item in site.top-menu %}
             <a class="top-menu-item {% if page.url == item.url %}top-menu-item-selected{% endif %}" href="{{ item.url }}">{{ item.text }}</a>
             {% endfor %}
-            <a class="top-menu-item top-menu-item-icon" href="/feed.xml" target="_blank"><i class="fa fa-rss-square"></i></a>
-            <a class="top-menu-item top-menu-item-icon" href="{{ site.github-url }}" target="_blank"><i class="fa fa-github-square"></i></a>
+            <a class="top-menu-item top-menu-item-icon rss-icon" href="/feed.xml" target="_blank"><i class="fa fa-rss-square"></i></a>
+            <a class="top-menu-item top-menu-item-icon github-icon" href="{{ site.github-url }}" target="_blank"><i class="fa fa-github"></i></a>
         </div>
     </div>
 
