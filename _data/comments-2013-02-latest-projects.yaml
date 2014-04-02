@@ -1,0 +1,18 @@
+- author: Jon
+  date: 2013-02-07 8:24:35 +10:00
+  contents: |
+    Basil sounds like such a good project. I assume there aren't any JS libraries out there doing what you are doing? I think it's cool that it stemmed from a need you had at work but that you are also willing to share it with the rest of the public. I am struggling to think of something. I wish I could contribute but I have no idea where to start, and I don't really use Javascript at my job at all. I would be more of a burden than help., just slowing you down.
+    
+    I am itching to start some kind of open source programming project, but I have like a back log of other projects I need to finish first. Like a heavy sack just weighing me down. I need to prioritize them and finish them off. For me at the moment the attitude is not to think of the whole project, like some big monolith task I need to complete. Instead, my attitude towards projects I want to finish is to just spend time on it every day. If I continually do this, the project should just finish itself. It's so easy to get optimistic and excited about newer projects, but it side tracks me so much. Essentially it's procrastination. 
+    
+    Late last year I was thinking about projects I wanted to do this year and one was to start blogging more. I want to code it up in php, just so I can exercise that language again, because it feels feint and distant. It's like maths, I can remember studying it at uni, however if you threw a problem infront of me I would not remember how to solve it straight away.
+    
+    I look forward to reading you future posts :)
+
+- author: Steve
+  date: 2013-02-07 8:37:32 +10:00
+  contents: |
+    There are a couple of libraries out there that do similar - the most famous one is <a href="http://pivotal.github.com/jasmine/" rel="nofollow">Jasmine</a>, which you can see has a similar grammar to Basil (very common grammar to have in behaviour driven libraries).  But notice in order to have setup, you need to have these ugly beforeEach and afterEach functions?  Makes it harder to read.  for no real gain.  Basil also is meant to just be a test runner - you can plug in your own assertions and mocking.  I prefer best of breed over a monolithic project (similar to TFS vs Git/TeamCity etc.)
+    
+    As for projects, I'd suggest lowering the scope/size.  I never finished the ZAMF projects because they're too darn large.  Basil is already in a very usable state, and that motivates me to just add more to it when I get the time.
+
