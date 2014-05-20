@@ -62,7 +62,10 @@ The light!
 In the end, I just kept running `npm install express -g` until it worked. It's intermittent, which makes me think this stuff installs in parallel or there's a load balancer
 serving the wrong file or something.  Not much of a light, but them's the breaks.
 
-Running `npm install` for the package had similar issues.  As before try-until-it-works fixes it, and is simpler if you install it package-at-a-time.  I couldn't find
-any documentation about parallel installs, so I've no idea what's going on.
+Running `npm install` for the package had similar issues.  As before the "keep on trying" Method works, and works in fewer iterations if you install
+it package-at-a-time.  I couldn't find any documentation about parallel installs, so I've no idea what's going on.
 
-Be sure to let me know if you know more than I!
+Be sure to let me know if you know what's going on here!
+
+IN any case, it was easy sailing from here on out. The tutorial was straight forward,
+though it reminded me of my PHP days (jam the DB object into the request object? _Really_?)
