@@ -48,12 +48,14 @@ and tried again, to make sure my solution was valid.
     File exists: C:\Users\*****\AppData\Roaming\npm\node_modules\express\node_modules\send\node_modules\mime
     Move it away, and try again.
 
-It wasn't. I've made sure `%appdata%/npm-cache` is empty as well, to no avail.  I sometimes get a few others, as well - seems to cycle around, even though the cache
+It wasn't. I've made sure `%appdata%/npm-cache` is empty as well, to no avail.  I sometimes get a few other errors, which seem to cycle around - even though the cache
 and modules are empty
 
     npm ERR! Error: ENOENT, chmod 'C:\Users\*****\AppData\Roaming\npm\node_modules\express\node_modules\type-is\node_modules\mime\LICENSE'
 
     npm ERR! Error: ENOENT, lstat 'C:\Users\*****\AppData\Roaming\npm\node_modules\express\node_modules\send\node_modules\mime\types\mime.types'
+
+I'm sure I got an `EPERM` here as well.
 
 I've since learned that `ENOENT` means "No such file or directory".  I'm well into yak-shaving territory at this point.
 
@@ -67,5 +69,5 @@ it package-at-a-time.  I couldn't find any documentation about parallel installs
 
 Be sure to let me know if you know what's going on here!
 
-IN any case, it was easy sailing from here on out. The tutorial was straight forward,
+In any case, it was easy sailing from here on out. The tutorial was straight forward,
 though it reminded me of my PHP days (jam the DB object into the request object? _Really_?)
