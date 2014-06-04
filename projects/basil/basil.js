@@ -1,62 +1,48 @@
-(function(global) {
-    function Interceptor (global, callback) {
-        this._global = global;
-        this._callback = callback;
-        this._intercepted = [];
-        this._isPaused = false;
-        this._interceptQueue = [];
-    }
-
-    Interceptor.prototype = {
-        intercept: function(methodName) {
-            if (this._global[methodName])
-                throw new Basil.CannotInterceptExistingMethodError(methodName);
-
-            this._global[methodName] = this._handleIntercept.bind(this);
-            this._intercepted.push(methodName);
-        },
-
-        restore: function() {
-            this._intercepted.forEach(function(methodName) {
-                delete this._global[methodName];
-            }, this);
-            this._intercepted.length = 0;
-        },
-
-        _handleIntercept: function(variableArgs) {
-            var args = arguments;
-            if (!this._isPaused)
-                this._callback.apply(this, args);
-            else {
-                this._interceptQueue.push((function() { this._callback.apply(this, args); }).bind(this));
-            }
-        },
-
-        pause: function() {
-            this._isPaused = true;
-        },
-
-        resume: function() {
-            this._isPaused = false;
-
-            this._interceptQueue.forEach(function(fn) {fn();});
-            this._interceptQueue.length = 0;
-        }
-    };
-
+﻿(function(global) {
     function TestRunner () {
-        this._notifyRootCompleted = [];
+        this._plugins = this._plugins.slice();
+        this._testQueue = [];
+        this._rootTests = [];
+        this._started = false;
+        this.test = this.test.bind(this);
     }
 
     TestRunner.prototype = {
+        _plugins: [],
+
         test: function(name, fn) {
+            if (this._started)
+                return this._runTest(name, fn);
+            else
+                this._testQueue.unshift(this._runTest.bind(this, name, fn));
+        },
+
+        start: function() {
+            this._started = true;
+            this._testQueue.forEach(function(fn) {
+                setTimeout(fn, 1);
+            });
+        },
+
+        abort: function(){
+            this._aborted = true;
+        },
+
+        _runTest: function(name, fn) {
+            if (this._aborted)
+                return;
+
             if (typeof name == "function") {
                 fn = name;
                 name = this._extractName(fn);
             }
+
             var test = this._createTest(name);
 
-            this._runTest(test, fn);
+            if (this._outerTest)
+                this._runSingleBranch(test, fn);
+            else
+                this._runTree(test, fn);
 
             return test;
         },
@@ -80,46 +66,74 @@
                 : new Test(name);
         },
 
-        _runTest: function(test, fn) {
-            this._outerTest
-                ? this._runOnce(test, fn)
-                : this._runUntilComplete(test, fn);
-        },
-
-        _runUntilComplete: function(test, fn) {
+        _runTree: function(test, fn) {
+            this._rootTests.push(test);
             while (!test.isComplete()) {
-                this._shouldStop = false;
+                this._branchHasBeenRun = false;
                 this._thisValue = {};
-                this._runOnce(test, fn);
-            }
 
-            this._notifyRootCompleted.forEach(function(fn) { fn(test); });
+                this.runPluginStack(this._runSingleBranch.bind(this, test, fn), 'setup', this._thisValue, [test]);
+            }
         },
 
-        _runOnce: function(test, fn) {
-            if (test.isComplete() || this._shouldStop)
+        _runSingleBranch: function(test, fn) {
+            if (test.isComplete() || this._branchHasBeenRun)
                 return;
 
-            this._runTestFunction(test, fn);
+            this.runPluginStack(this._runTestFunction.bind(this, test, fn), 'test', this._thisValue, [test]);
 
-            if (test.isComplete())
-                this._shouldStop = true;
+            this._branchHasBeenRun = true;
+        },
+
+        runPluginStack: function(innerMostFunction, pluginMethod, context, args) {
+            var functions = [innerMostFunction].concat(this._pluginMethods(pluginMethod));
+
+            callback();
+
+            if (functions.length)
+                throw new PluginDidNotDelegateError();
+
+            function callback () {
+                functions.pop().apply(context, [callback].concat(args));
+            }
+        },
+
+        runPluginQueue: function (pluginMethod, context, args) {
+            this._plugins.forEach(function (plugin) {
+                if (pluginMethod in plugin)
+                    plugin[pluginMethod].apply(context, args);
+            });
+        },
+
+        _pluginMethods: function (methodName) {
+            return this._plugins
+                .map(function (plugin) { return plugin[methodName]; })
+                .filter(function (func) { return !!func; });
         },
 
         _runTestFunction: function(test, fn) {
+            if (test.isComplete() || this._branchHasBeenRun)
+                return;
+
             var outerTest = this._outerTest;
             this._outerTest = test;
             test.run(fn, this._thisValue);
             this._outerTest = outerTest;
         },
 
-        onRootTestCompleted: function(fn) {
-            this._notifyRootCompleted.push(fn);
+        tests: function() {
+            return this._rootTests;
+        },
+
+        registerPlugin: function() {
+            for (var i = 0; i < arguments.length; i++)
+                this._plugins.push(arguments[i]);
         }
     };
 
-    function Test (name) {
+    function Test (name, parent) {
         this._name = name;
+        this._parent = parent;
         this._runCount = 0;
         this._children = {};
         this._error = null;
@@ -130,12 +144,27 @@
             return this._name;
         },
 
+        key: function() {
+            return this.name().toLowerCase().replace(/>/g, '');
+        },
+
+        fullKey: function() {
+            return this._parent
+                ? this._parent.fullKey() + '>' + this.key()
+                : this.key();
+        },
+
         isComplete: function() {
-            return this._runCount > 0
-                && this.children().every(function(child) { return child.isComplete(); });
+            return this._skipped
+                || this._isComplete
+                || (this._isComplete = this._runCount > 0
+                    && this.children().every(function (child) { return child.isComplete(); }));
         },
 
         run: function(fn, thisValue) {
+            if (this._skipped)
+                return;
+
             try {
                 fn.call(thisValue);
             } catch (error) {
@@ -148,6 +177,14 @@
             this._runCount++;
         },
 
+        skip: function() {
+            this._skipped = true;
+        },
+
+        wasSkipped: function() {
+            return !!this._skipped;
+        },
+
         runCount: function() {
             return this._runCount;
         },
@@ -156,7 +193,7 @@
             if (this._children[name])
                 return this._children[name];
 
-            return this._children[name] = new Test(name);
+            return this._children[name] = new Test(name, this);
         },
 
         children: function() {
@@ -175,12 +212,10 @@
         }
     };
 
-    function CannotInterceptExistingMethodError (message) { this.message = message; }
+    function PluginDidNotDelegateError () { this.message = "A registered plugin did not delegate"; }
 
     global.Basil = {
         Test: Test,
-        TestRunner: TestRunner,
-        Interceptor: Interceptor,
-        CannotInterceptExistingMethodError: CannotInterceptExistingMethodError
+        TestRunner: TestRunner
     };
 })(this);
