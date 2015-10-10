@@ -6,10 +6,10 @@
 
 html, body {
     height: 100%;
-    overflow-y: scroll;
 }
 
 body {
+    overflow-y: scroll;
     font-family: "Open Sans", Helvetica, Arial, sans-serif;
     color: #444;
 }
