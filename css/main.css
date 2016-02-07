@@ -85,6 +85,10 @@ h2 {
 .post-contents {
 }
 
+.post-footer {
+    color: #888;
+}
+
 .page {
     padding-bottom: 1em;
     border-bottom: 1px dotted #DDD;

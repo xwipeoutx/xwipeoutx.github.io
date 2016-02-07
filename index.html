@@ -1,21 +1,24 @@
----
-layout: default
-title: Steve's Space
-subtitle:
+--- 
+layout: default 
+title: Steve's Space 
+subtitle: 
 ---
 <div id="home">
-  <div class="posts">
-    {% for post in site.posts limit:5 %}
-      <div class="post">
-          <a class="post-title" href="{{ post.url }}">
+    <div class="posts">
+        {% for post in site.posts limit:5 %}
+        <div class="post">
+            <a class="post-title" href="{{ post.url }}">
             {{ post.title }}
         </a>
-        <div class="post-date">{{ post.date | date_to_string }}</div>
-          <div class="post-contents">
-              {{ post.content }}
-          </div>
+            <div class="post-date">{{ post.date | date_to_string }}</div>
+            <div class="post-contents">
+                {{ post.content }}
+            </div>
 
-      </div>
-    {% endfor %}
-  </div>
+            <p class="post-footer">
+                This post originally appeared on <a href="config.url">Steve's Space</a> on {{ post.date | date_to_string }}
+            </p>
+        </div>
+        {% endfor %}
+    </div>
 </div>

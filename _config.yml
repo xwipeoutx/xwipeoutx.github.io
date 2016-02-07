@@ -1,8 +1,8 @@
-markdown: redcarpet
-pygments: true
+markdown: kramdown
+rouge: true
 encoding: UTF-8
 excerpt_separator: ""
-safe: false
+safe: true
 permalink: /:year/:month/:title/
 
 name: Steve's Space
