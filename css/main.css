@@ -156,6 +156,7 @@ h2 {
     padding-top: 0.5em;
     padding-bottom: 0.5em;
     margin-bottom: 1em;
+    white-space: nowrap;
 }
 
 .top-menu-item {

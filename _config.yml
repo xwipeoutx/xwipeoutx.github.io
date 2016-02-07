@@ -1,8 +1,16 @@
 markdown: kramdown
+highlighter: rogue
 rouge: true
 encoding: UTF-8
 excerpt_separator: ""
-safe: true
+safe: false
+
+gems:
+  - jekyll-redirect-from
+
+whitelist:
+  - jekyll-redirect-from
+
 permalink: /:year/:month/:title/
 
 name: Steve's Space
@@ -13,9 +21,9 @@ github-url: https://github.com/xwipeoutx
 top-menu:
   - url: /
     text: Home
-  - url: /projects.html
+  - url: /projects
     text: Projects
-  - url: /archive.html
+  - url: /archive
     text: Archive
-  - url: /about-me.html
+  - url: /about-me
     text: About Me
