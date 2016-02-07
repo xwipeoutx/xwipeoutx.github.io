@@ -70,6 +70,6 @@ The new solution
 [Previously](https://github.com/xwipeoutx/undirect/blob/d6b613afa1201fa4fbd378c017cdc73dbfc74494/undirect.js), my plugin would search all the anchor tags, look for ones that had an `onmousedown` script with `return rwt` in it, and remove the value.
 Every time a DOM element was added or removed, I would run it again.
 
-[That's updated now](https://github.com/xwipeoutx/undirect/blob/master/undirect.js) to simply overwrite the `rwt` function on `window` to one that does nothing.
+[That's updated now](https://github.com/xwipeoutx/undirect/blob/544aefe555181fa823804a25fa30f6e0dfa2515e/undirect.js) to simply overwrite the `rwt` function on `window` to one that does nothing.
 I (perhaps unnecessarily) future-proofed it against overwrites by making it a property with `writeable: false` as well.
 Futile, probably - I'm sure they could get around that simple enough, but I have nothing to lose by doing that.
