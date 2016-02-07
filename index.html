@@ -16,7 +16,7 @@ subtitle:
             </div>
 
             <p class="post-footer">
-                This post originally appeared on <a href="config.url">Steve's Space</a> on {{ post.date | date_to_string }}
+                This post originally appeared at <a href="{{ post.url }}">Steve's Space</a> on {{ post.date | date_to_string }}
             </p>
         </div>
         {% endfor %}
