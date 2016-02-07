@@ -12,7 +12,7 @@
 - author: Steve
   date: 2013-02-07 8:37:32 +10:00
   contents: |
-    There are a couple of libraries out there that do similar - the most famous one is <a href="http://pivotal.github.com/jasmine/" rel="nofollow">Jasmine</a>, which you can see has a similar grammar to Basil (very common grammar to have in behaviour driven libraries).  But notice in order to have setup, you need to have these ugly beforeEach and afterEach functions?  Makes it harder to read.  for no real gain.  Basil also is meant to just be a test runner - you can plug in your own assertions and mocking.  I prefer best of breed over a monolithic project (similar to TFS vs Git/TeamCity etc.)
+    There are a couple of libraries out there that do similar - the most famous one is <a href="http://jasmine.github.io" rel="nofollow">Jasmine</a>, which you can see has a similar grammar to Basil (very common grammar to have in behaviour driven libraries).  But notice in order to have setup, you need to have these ugly beforeEach and afterEach functions?  Makes it harder to read.  for no real gain.  Basil also is meant to just be a test runner - you can plug in your own assertions and mocking.  I prefer best of breed over a monolithic project (similar to TFS vs Git/TeamCity etc.)
     
     As for projects, I'd suggest lowering the scope/size.  I never finished the ZAMF projects because they're too darn large.  Basil is already in a very usable state, and that motivates me to just add more to it when I get the time.
 
