@@ -4,6 +4,7 @@ rouge: true
 encoding: UTF-8
 excerpt_separator: ""
 safe: false
+future: true
 
 gems:
   - jekyll-redirect-from
