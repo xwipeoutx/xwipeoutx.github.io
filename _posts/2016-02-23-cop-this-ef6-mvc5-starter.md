@@ -280,7 +280,7 @@ We've made a critical decoupling here that will save your views from polluting t
 
 This is pretty powerful - the projections will be done in the database query, so you'll only be getting what you need for the view model, not everything from every entitiy. Filtering is also trivially done from expressions - so again, in the query itself.
 
-#4. Setup injection
+# 4. Setup injection
 
 [Autofac](http://autofac.org) will be our container of choice - specifically the [Autofac MVC QuickStart](http://docs.autofac.org/en/latest/integration/mvc.html#quick-start).
 
