@@ -8,9 +8,12 @@ subtitle:
         {% for post in site.posts limit:5 %}
         <div class="post">
             <a class="post-title" href="{{ post.url }}">
-            {{ post.title }}
-        </a>
-            <div class="post-date">{{ post.date | date_to_string }}</div>
+                {{ post.title }}
+            </a>
+            <div class="post-date">
+                {{ post.date | date_to_string }}
+                <a class="comment-link" href="{{ post.url }}#disqus_thread"></a>
+            </div>
             <div class="post-contents">
                 {{ post.content }}
             </div>

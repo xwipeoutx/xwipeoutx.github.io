@@ -140,6 +140,11 @@ h2 {
     color: #444444;
 }
 
+.comment-link {
+    font-weight: bold;
+    margin-left: 16px;
+}
+
 .stealth-link {
     color: #444;
 }
