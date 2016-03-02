@@ -4,6 +4,20 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="description" content="{{ site.tag }} ">
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@{{ site.twitter-handle }}">
+    <meta name="twitter:creator" content="@{{ site.twitter-handle }}">
+    <meta name="twitter:image:src" content="{{ site.url }}{{ site.avatar-url }}">
+    <meta name="twitter:url" content="{{ site.url }}{{ page.url }}">
+    
+    {% if page.title == site.name %}
+    <meta content="{{ site.name }}" name="twitter:title">
+    <meta name="twitter:description" content="{{ site.tag }}">
+    {% else %}
+    <meta content="{{ page.title }}" name="twitter:title">
+    <meta name="twitter:description" content="{{ page.content | strip_html | xml_escape | truncate: 200 }}">
+    {% endif %}
     <title>
         {% if page.title == site.name %}
             {{ site.name }}
@@ -53,8 +67,9 @@
             {% for item in site.top-menu %}
             <a class="top-menu-item {% if page.url == item.url %}top-menu-item-selected{% endif %}" href="{{ item.url }}">{{ item.text }}</a>
             {% endfor %}
-            <a class="top-menu-item top-menu-item-icon rss-icon" href="/feed.xml" target="_blank"><i class="fa fa-rss-square"></i></a>
             <a class="top-menu-item top-menu-item-icon github-icon" href="{{ site.github-url }}" target="_blank"><i class="fa fa-github"></i></a>
+            <a class="top-menu-item top-menu-item-icon twitter-icon" href="https://twitter.com/{{ site.twitter-handle }}" target="_blank"><i class="fa fa-twitter"></i></a>
+            <a class="top-menu-item top-menu-item-icon rss-icon" href="/feed.xml" target="_blank"><i class="fa fa-rss-square"></i></a>
         </div>
     </div>
 
