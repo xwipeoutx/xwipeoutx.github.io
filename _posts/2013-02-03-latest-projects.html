@@ -19,3 +19,15 @@ alias: /latest-projects/
 </ul>
 <p>So I've been fairly busy, arguably not busy enough!</p>
 <p>My priority at the moment is to finish Basil - it's in a workable enough state now, but the filtering needs work before it can be used in any reasonably large project (such as what we have at Zap).  I'm quite proud of Basil - I'm unaware of any other testing framework in any language that matches it in terms of readability of the test.  Hopefully it takes off in popularity when I'm finished with it and the documentation.</p>
+
+<div class="comments">
+    <h2>Old comments</h2>
+
+    {% for comment in site.data['comments-2013-02-latest-projects'] %}
+        <div class="comment">
+            <div class="comment-author">{{ comment.author }}</div>
+            <div class="comment-contents">{{ comment.contents | markdownify }}</div>
+            <div class="comment-date">{{ comment.date | date: '%a %d %B %Y, %H:%M' }} AEST</div>
+        </div>
+    {% endfor %}
+</div>

@@ -28,3 +28,15 @@ alias: /baptism/
         href="http://www.biblegateway.com/passage/?search=Mark%2016:15-18&amp;version=NIV" target="_blank">Mark 16</a>, in <a href="http://www.biblegateway.com/passage/?search=john%203:22-26&amp;version=NIV" target="_blank">John 3</a>, in <a href="http://www.biblegateway.com/passage/?search=acts%202:38-41&amp;version=NIV" target="_blank">Acts 2</a> - in many other places! There are few commands that are so clear for a believer to follow, and so simple to perform, that I sometimes wonder if it's
     sole purpose is to just be a test of belief.</p>
 <p>So, we're not going to be baptising Sophie until she can make that decision for herself.  We will certainly dedicate her, teach her and guide her.  We will pray for her and not leave her out in a spiritual wasteland (yes, we've had that accusation).  And when (if) she comes to faith, she can get baptised, and know she is obedient to the simple command.</p>
+
+<div class="comments">
+    <h2>Old comments</h2>
+
+    {% for comment in site.data['comments-2013-02-baptism'] %}
+        <div class="comment">
+            <div class="comment-author">{{ comment.author }}</div>
+            <div class="comment-contents">{{ comment.contents | markdownify }}</div>
+            <div class="comment-date">{{ comment.date | date: '%a %d %B %Y, %H:%M' }} AEST</div>
+        </div>
+    {% endfor %}
+</div>

@@ -28,3 +28,15 @@ alias: /church-damnation/
 <p>Thanks for reading :)</p>
 <p>1. I will use the term "unchurched" throughout this, as it's the most neutral word I can think of to describe someone who has never been an active member of a Christian congregation.<br />
 2. Wow, I just noticed the wiki article for that 'church' says it's a hate group. Not that I dispute that as such (I find their actions abhorrent), I would have thought that kind of description was against wiki's NPOV pillar. Maybe not though, reading the wiki entry for "hate group".</p>
+
+<div class="comments">
+    <h2>Old comments</h2>
+
+    {% for comment in site.data['comments-2010-04-church-and-damnation'] %}
+        <div class="comment">
+            <div class="comment-author">{{ comment.author }}</div>
+            <div class="comment-contents">{{ comment.contents | markdownify }}</div>
+            <div class="comment-date">{{ comment.date | date: '%a %d %B %Y, %H:%M' }} AEST</div>
+        </div>
+    {% endfor %}
+</div>

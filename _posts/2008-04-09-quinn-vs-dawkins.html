@@ -14,3 +14,15 @@ alias: /quinn-vs-dawkins/
 </ul>
 <p>Yeah, I had a great laugh.</p>
 <p><a href="http://catholiceducation.org/articles/science/quinndawkins2.MP3">Clicky Linky Download</a> (MP3)</p>
+
+<div class="comments">
+    <h2>Old comments</h2>
+
+    {% for comment in site.data['comments-2008-04-quinn-vs-dawkins'] %}
+        <div class="comment">
+            <div class="comment-author">{{ comment.author }}</div>
+            <div class="comment-contents">{{ comment.contents | markdownify }}</div>
+            <div class="comment-date">{{ comment.date | date: '%a %d %B %Y, %H:%M' }} AEST</div>
+        </div>
+    {% endfor %}
+</div>
