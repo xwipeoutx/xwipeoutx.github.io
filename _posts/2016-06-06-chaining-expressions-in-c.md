@@ -20,6 +20,7 @@ I recently had to implement a simple report filter that had optional date ranges
 * Clean code - DRY, reusable, terse _et. al._
 
 This is a faithful reproduction of my filter:
+
 ```c#
 public class CarFilter
 {
@@ -30,14 +31,18 @@ public class CarFilter
     public DateTime? PurchaseDateTo { get; set; }
 }
 ```
+
 When I design tthings that I want to be highly readable, I generally write the calling code first:
+
 ```c#
 public IEnumerable<Car> GetCars(CarFilter carFilter)
 {
     return carFilter.ApplyTo(_carQuery);
 }
 ```
+
 See how clean that is? Ok ok, so that was cheating....
+
 ```c#
 public IQueryable<Car> ApplyTo(IQueryable<Car> carQuery)
 {
@@ -46,6 +51,7 @@ public IQueryable<Car> ApplyTo(IQueryable<Car> carQuery)
         .WhereDateBetween(car => car.PurchaseDate, PurchaseDateFrom, PurchaseDateTo);
 }
 ```
+
 I thought an extension method was better suited for the example here, but the real solution used a seperate Query object. Just so ya know.
 
 ```c#
