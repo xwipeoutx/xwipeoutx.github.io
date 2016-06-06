@@ -123,6 +123,7 @@ internal class SwapVisitor : ExpressionVisitor
 ```
 
 And then implement the `Chain` method
+
 ```c#
 public static Expression<Func<TIn, TOut>> Chain<TIn, TInterstitial, TOut>(
     this Expression<Func<TIn, TInterstitial>> inner,
@@ -132,6 +133,7 @@ public static Expression<Func<TIn, TOut>> Chain<TIn, TInterstitial, TOut>(
     return Expression.Lambda<Func<TIn, TOut>>(visitor.Visit(outer.Body), inner.Parameters);
 }
 ```
+
 This creates a `SwapVisitor` that replaces the first parameter of `outer` (the `b` in `G(b)`) with the body of `inner` (the `F` in `F(a)`). It then creates the new lambda expression with the body `G∘F` (wiki: [function composition](https://en.wikipedia.org/wiki/Function_composition)) and the parameter from `inner` (the `a` of `F(a)`).
 
 And we're done! Very simple, type safe code (except for the expression tree twiddling) that produces nice, fast queries!
