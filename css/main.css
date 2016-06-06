@@ -41,6 +41,12 @@ a:hover {
     color: #0f3647;
 }
 
+code.highlighter-rouge {
+    font-weight: bold;
+    padding: 2px 4px;
+    background: #f0f0f0;
+}
+
 /** Layout **/
 
 #site {
