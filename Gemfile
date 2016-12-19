@@ -1,2 +1,3 @@
+source 'https://rubygems.org'
 gem 'jekyll-redirect-from'
-gem install 'rouge'
+gem 'rouge'
