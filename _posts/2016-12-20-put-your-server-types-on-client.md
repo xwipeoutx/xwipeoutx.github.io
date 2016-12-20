@@ -7,7 +7,7 @@ tags:
 - c#
 - typescript
 - codegen
-date: 2016-12-20 14:00:00 +1000
+date: 2016-12-20 13:30:00 +1000
 ---
 A recent gig I was involved in relied fairly heavily on code generation in order to make our client/server communications type safe.  
 
