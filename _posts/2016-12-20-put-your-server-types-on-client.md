@@ -1,34 +1,37 @@
 ---
 layout: post
-title: Chaining Expressions in C#
+title: Put your server types on your client
 categories:
 - Programming
 tags:
 - c#
-- expressions
-- linq
-date: 2016-06-06 22:00:00 +1000
+- typescript
+- codegen
+date: 2016-12-20 14:00:00 +1000
 ---
-A recent gig I was involved in relied fairly heavily on code generation in order to make our client/server communications safe.  
+A recent gig I was involved in relied fairly heavily on code generation in order to make our client/server communications type safe.  
 
 We were using [TypeScript](https://www.typescriptlang.org) so a lot of our safety could be guaranteed at compile time - as long as the types were on the client.
+Since we're fallibe, and computers like doing things repetitively, we used some codegen to do thish for us.
 
 Our goals?
 
 - Generate DTOs for all models (and dependants) going to/from API controllers
 - For all enums in the models, create a way to get names, values and descriptions
-- URLs for all API endpoints.
+- Avoid TypeScript's `any` keyword, which breaks this whole approach
 
-## Using TypeLite
+I will be covering URL and client generation in another post - this is about the _types_ not the _operations_.
+
+## Generating Defintions: TypeLite
 
 [TypeLite](TypeLite) did the bulk of the heavy lifting for us - it had appropriate extensibility points, making it easy
 to customise things like camel casing and type names.
 
 We found the easiest thing to do was to add a command like project to our solution,
 and a wrapper powershell script to compile and execute it.  This project could then
-just points to the assembly we wanted types for and away we go!
+just point to the assembly we wanted types for and away we go!
 
-Our configuration was like this:
+Here's what our generator looked like:
 
 ```cs
 public class Program
@@ -40,7 +43,7 @@ public class Program
             .SelectMany(type => type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.InvokeMethod))
             .SelectMany(ParameterAndReturnTypes)
             .SelectMany(Unwrap)
-            .Where(t => !t.IsPrimitive && t != typeof(string))
+            .Where(t => !t.IsPrimitive && t != typeof(string) && t != typeof(object))
             .Where(t => !t.Namespace.StartsWith("System.")) // Customize this bit to suit your app
             .Distinct()
             .OrderBy(t => t.FullName) // Makes output better for diff
@@ -106,9 +109,35 @@ A few tidbits with this config:
 * Generic types and arrays need to be unwrapped recursively to ensure they get included explicitly
 * Certain types need to be overridden because `Date` and `Guid` are not things in JSON land
 * Order by fullname makes diffs nice!
-* Spaces, not tabs
+* Spaces, not tabs.
 
-## Generating enum bits
+### Aside: Why not NSwag?
+
+This isn't the only option - [NSwag](https://github.com/NSwag/NSwag) can do a similar thing in a few lines of code:
+
+```cs
+var controllers = typeof(FooController).Assembly.GetExportedTypes()
+    .Where(t => t.IsSubclassOf(typeof(ApiController)));
+
+var document = new WebApiToSwaggerGenerator(new WebApiToSwaggerGeneratorSettings())
+    .GenerateForControllers(controllers);
+
+var code = new SwaggerToTypeScriptClientGenerator(document, new SwaggerToTypeScriptClientGeneratorSettings())
+    .GenerateFile();
+
+File.WriteAllText("api.ts", code);
+```
+
+Unfortunately it didn't fill the bill for us for a few reasons:
+
+* No customization of client side type names - specifically we wanted classes
+to be `PascalCase` and properties / parameters to be `camelCase`, which didn't seem possible
+* Generated rather verbose classes for contracts instead of simple interfaces that would not be in the output.
+  * These classes were also very `any` friendly, which made it too easy to dodge
+* We were going to write our own abstraction over the HTTP services anyway, for more simply customizable loading bars and things
+* No insight into original C# types.  The `enum` support was pretty important to us
+
+## Generating Enums: EnumGenie
 
 This worked fine for our model, and we got enum declarations as a result, but code
 like `let status = OrderStatus.InProgress` cannot be used - the generated file isn't compiled
@@ -126,8 +155,9 @@ new EnumGenie.EnumGenie()
 ```
 
 and whamo! Suddenly we have a magical file letting us loop through enum values,
-grab descriptions and use the enums as we want!  One cool little feature of
-TypeScript is that these are treated as equivalent:
+grab descriptions and use the enums as we want!  
+
+One cool little feature of TypeScript is that these are treated as equivalent, and can be assigned to each other:
 ```ts
 // Api.d.ts
 declare export enum Status {
@@ -143,18 +173,10 @@ export enum Status {
 
 ```
 
-So an enum generated from EnumGenie can be assigned to the API enum wih no issue!
+## Conclusion
 
-## URLs
+There's a fair chunk of code here - most of it reflecting over WebAPI and fiddling
+with formatting.  The result is a tonne of generated goodies for use on the client.
 
-Our URL solution was a little rudimentary.  We had a [convention](https://github.com/andrewabest/Conventional) of one-public-method-per-controller,
-which meant that mappings between controllers and endpoints were 1-1.
-
-Aside: I wouldn't do this again, as it meant we couldn't have `POST` and `GET` on the same URL, but it made URL generation easy.
-
-Generating the URLs was then a matter of reflecting over the controllers, grabbing our route attributes (mandatory via a convention test) and jamming them together.
-
-We put in a couple of smarts to support route parameters to, but the resulting code was something like:
-
-```cs
-```
+Stay tuned for the next post, where we'll look at getting the operations themselves
+down to the client.
