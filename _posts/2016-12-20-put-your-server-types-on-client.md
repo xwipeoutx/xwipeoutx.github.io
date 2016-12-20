@@ -24,7 +24,7 @@ I will be covering URL and client generation in another post - this is about the
 
 ## Generating Defintions: TypeLite
 
-[TypeLite](TypeLite) did the bulk of the heavy lifting for us - it had appropriate extensibility points, making it easy
+[TypeLite](http://type.litesolutions.net/) did the bulk of the heavy lifting for us - it had appropriate extensibility points, making it easy
 to customise things like camel casing and type names.
 
 We found the easiest thing to do was to add a command like project to our solution,
