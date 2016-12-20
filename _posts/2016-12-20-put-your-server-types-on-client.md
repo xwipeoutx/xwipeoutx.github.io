@@ -158,6 +158,7 @@ and whamo! Suddenly we have a magical file letting us loop through enum values,
 grab descriptions and use the enums as we want!  
 
 One cool little feature of TypeScript is that these are treated as equivalent, and can be assigned to each other:
+
 ```js
 // Api.d.ts
 declare export enum Status {
