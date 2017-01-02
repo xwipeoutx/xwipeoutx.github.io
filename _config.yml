@@ -24,9 +24,9 @@ avatar-url: /images/steve.jpeg
 top-menu:
   - url: /
     text: Home
-  - url: /projects
+  - url: /projects/
     text: Projects
-  - url: /archive
+  - url: /archive/
     text: Archive
-  - url: /about-me
+  - url: /about-me/
     text: About Me
