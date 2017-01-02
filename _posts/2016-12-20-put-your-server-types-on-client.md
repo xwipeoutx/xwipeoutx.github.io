@@ -12,7 +12,7 @@ date: 2016-12-20 13:30:00 +1000
 A recent gig I was involved in relied fairly heavily on code generation in order to make our client/server communications type safe.  
 
 We were using [TypeScript](https://www.typescriptlang.org) so a lot of our safety could be guaranteed at compile time - as long as the types were on the client.
-Since we're fallibe, and computers like doing things repetitively, we used some codegen to do thish for us.
+Since we're fallibe, and computers like doing things repetitively, we used some codegen to do this for us.
 
 Our goals?
 
