@@ -2,7 +2,7 @@ markdown: kramdown
 highlighter: rouge
 rouge: true
 encoding: UTF-8
-excerpt_separator: ""
+excerpt_separator: "<!--break-->"
 safe: false
 future: true
 

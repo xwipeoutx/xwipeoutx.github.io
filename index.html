@@ -14,17 +14,12 @@ subtitle:
                 {{ post.date | date_to_string }}
             </div>
             <div class="post-contents">
-                {{ post.content }}
+                {{ post.excerpt }}
             </div>
 
-            <p class="post-comments-link">
-                <a href="{{ post.url }}">View more or comment</a>
+            <p class="read-more-link">
+                <a href="{{ post.url }}">...read more/comment</a>
             </p>
-
-            <p class="post-footer">
-                This post originally appeared at <a href="{{ post.url }}">Steve's Space</a> on {{ post.date | date_to_string }}
-            </p>
-            
         </div>
         {% endfor %}
     </div>

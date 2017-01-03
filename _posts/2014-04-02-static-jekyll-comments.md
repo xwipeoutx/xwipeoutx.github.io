@@ -9,6 +9,7 @@ Those of you paying very close attention will have noticed that posts now have a
 It's currently reading the comments reading in from specially named YAML files in the _data directory of the site,
 which I have to put in manually.
 
+<!--break-->
 You can find my comment [HTML](https://github.com/xwipeoutx/xwipeoutx.github.io/blob/master/_includes/comments.html)
 and [YAML](https://github.com/xwipeoutx/xwipeoutx.github.io/blob/master/_data) on GitHub, hopefully it's pretty straight self-explanatory.
 

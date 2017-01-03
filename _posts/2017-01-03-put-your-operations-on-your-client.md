@@ -11,7 +11,7 @@ date: 2017-01-03 13:30:00 +1000
 ---
 In the last post, [I showed how we put our server DTOs into our client code](/2016/12/put-your-server-types-on-client/), to ensure changes in our
 data structures didn't silently fail. In this post, I'll show you how we protected ourselves against changing API endpoints.
-
+<!--break-->
 ## Our application
 
 As before, our application is a WebAPI project with an Angular backend in TypeScript.

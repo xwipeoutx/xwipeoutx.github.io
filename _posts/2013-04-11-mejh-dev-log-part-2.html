@@ -10,6 +10,8 @@ alias: /mejh-dev-log-part-2/
 <p>So I created a class for my Mejh dudes, a "placer" to just randomly put them all over the bounding area for now, a renderer to create SVG elements for each of them, and a formatter to give the SVG elements what they need (radius, position, etc.).  And an application to tie it all together.</p>
 <p>Once the application was finished, and I had 100% code coverage and DI everywhere, I created an index.html, set up the DI container how I wanted it, and it worked (well, not quite - I forgot to set cx and cy attributes of the circles, so they all appeared at 0,0).  What's more, the container setup only required 3 manual registrations - everything else was automatic.</p>
 <p>It may not seem like much - a handful of classes which, when put together, do nothing more than display a bunch of random dots on the screen - but having any app "Just Work" feels damn good.</p>
+
+<!--break-->
 <p>Here's the libraries I'm using to do the bits:</p>
 <ul>
 <li><a href="https://github.com/soxtoby/InjectJs">InjectJS</a>: DI Container for Javascript.  Written just last week by a coworker, it's brilliant. Highly recommended.

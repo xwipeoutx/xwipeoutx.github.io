@@ -19,7 +19,7 @@ Our goals?
 - Generate DTOs for all models (and dependants) going to/from API controllers
 - For all enums in the models, create a way to get names, values and descriptions
 - Avoid TypeScript's `any` keyword, which breaks this whole approach
-
+<!--break-->
 I will be covering URL and client generation in another post - this is about the _types_ not the _operations_.
 
 ## Generating Defintions: TypeLite

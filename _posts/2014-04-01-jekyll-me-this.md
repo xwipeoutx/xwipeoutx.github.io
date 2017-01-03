@@ -8,6 +8,7 @@ date: 2014-04-01 20:30:00 +1000
 So, I've moved the blog over to [Jekyll](http://jekyllrb.com/), a static site generator that's pretty well suited to doing blogs,
 if you're a tech person, like myself.  No, this is not an April fool's joke!
 
+<!--break-->
 Moving over was a little arduous, not least of all because all the Jekyll tooling (including Ruby) really targets Linux or Mac users more than Windows users.
 
 So, if you're thinking of doing the same, here's a few tips:

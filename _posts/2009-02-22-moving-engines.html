@@ -11,6 +11,8 @@ alias: /moving-engines/
 ---
 <p>
 So, it seems I've bitten the bullet - being so close to the core (working straight from DirectX, and using no wrapper libraries besides what I create myself) has finally done me in. While I know can get the project working continuing on with my current engine, it doesn't seem very efficient for me to do so.</p>
+
+<!--break-->
 <p>
 For example, for me to get shadows working on my project, it took several days of coding (I was trying out an omni-directional shadow mapping technique). To get it working in <a href="http://www.ogre3d.org/">Ogre 3D</a>, it took 5secs - a call to <b>setShadowTechnique</b>, and then a call <b>setCastShadows(true)</b> for each node I want to cast a shadow. Simple! Time saving!</p>
 <p>

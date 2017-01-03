@@ -12,6 +12,7 @@ date: 2014-06-04 22:00:00 +1000
 There's a few settings I recently tweaked in [WebStorm](http://www.jetbrains.com/webstorm/) that vastly improved my development experience.  
 Here's a quick rundown.
  
+<!--break-->
 Ensure "Show Reformat Code" is disabled
 ---------------------------------------
 ![Show "Reformat Code" dialog](/images/2014-06-04-reformat-code.png)

@@ -158,6 +158,10 @@ h3 {
     color: #444;
 }
 
+.read-more-link {
+    text-align: right;
+}
+
 .copyright {
     font-size: 0.8em;
     text-align: center;

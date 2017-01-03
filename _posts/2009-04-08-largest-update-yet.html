@@ -12,6 +12,8 @@ tags:
 alias: /largest-update-yet/
 ---
 <p>Whew, I've just finished my biggest update yet, feature wise. I was surprised at how fast this one came out, but I'm quite pleased with the state of this product - it seems to be rock solid, fast, accurate and *gasp* even a little bit fun!</p>
+
+<!--break-->
 <p>So, since this seems almost like a milestone release, I think I'll write a bit about what's been done. Most of the content of this post will be over on the project's page, too, which will be updated as I go on.</p>
 <p>As you know, I had this project done a fair bit using my own custom rolled engine, but maintenance became just a tad extreme, and I figured that other people have already done stuff, so why should I have to reinvent the wheel? Some research found me Ogre</p>
 <p>The hardest thing about changing to Ogre was the way the main loop is done. In my own system, every scene node had an overrideable "Update" function, where I implemented my AI and everything. Basically, I extended scene nodes for every type of actor there was. In Ogre, you can't really extend the scene node class, without overriding the scene manager as well (which I didn't want to do) - instead, "frame listeners" are used - a function is called every tick on a frame listener, and they have to update the scene node. So I wrote a wrapper around all this so I can simply register my own AI classes, and this handled all the keyboard and mouse events</p>

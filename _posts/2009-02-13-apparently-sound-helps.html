@@ -10,6 +10,8 @@ tags:
 alias: /apparently-sound-helps/
 ---
 <p>So, I figure it's about time I figured out how to put sound effects into my game.  I've heard good things about OpenAL, so I thought I'd give that a go for this project.</p>
+
+<!--break-->
 <p>Starting out with OpenAL is really <a title="Starting OpenAL" href="http://www.gamedev.net/reference/articles/article2008.asp">quite easy</a>, and I got a sound happening in the game (gunshot firing) in an hour or so, not bad for someone who has never dealt with sound before. Turns out OpenAL is very similar to OpenGL in framework, so I'm sure that helped a lot.</p>
 <p>Anyway, the main problem with what I've got now is that I currently have 1 sound playing at a time, if I send it another sound, the previous sound will stop and this one will take priority - and it sounds really lame when I have 10 turrets firing at the same time. So I need to work out how to get multiple sources playing at the same time. Of course, this means I have to make a sound manager, so instead of just saying "play this sound", I say "this object wants to request playing this sound", and then only play it if there are enough sources available to play it.</p>
 <p>And the sound manager has to keep track of what sources are playing, and which have finished - so I can free that source up for another sound when it's ready. So that's what I'm up to now, writing a sound manager. I think it will be a while - especially since I can't find any tutorials or anything.</p>
