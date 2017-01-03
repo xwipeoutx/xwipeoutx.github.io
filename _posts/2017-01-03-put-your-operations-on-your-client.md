@@ -23,7 +23,9 @@ ensure every controller and action contains attribute routes.  Advantage: We kno
 
 The goal here is to make a module that contains a way to get the URL for each operation.  For static URLs, this is just be a `const`.
 
-For dynamic URLs, it is a function that takes in the typed parameters and returns the URL.  Examples? Sure!
+For dynamic URLs, it is a function that takes in the typed parameters and returns the URL.
+
+Examples? Sure, why not!
 
 ```
 export var getOrders = `/api/orders`;
@@ -144,7 +146,7 @@ if (!route.FullRouteTemplate.Contains("{"))
     return $"export const {route.Name} = `{route.FullRouteTemplate}`;";
 ```
 
-If there are no curlies, then there are no parameters - just output the URL - easy as!
+If there are no curlies, then there are no parameters - just output the template as-is - easy as!
 
 ```cs
 var parameters = ParamsRegex.Matches(route.FullRouteTemplate)
@@ -158,16 +160,16 @@ var parameters = ParamsRegex.Matches(route.FullRouteTemplate)
     .ToList();
 ```
 
-Here we make anonymous types for all the constraints using our regex.  Of course, the regex is the most crazy bit in this whole bit,
+Here we make anonymous types for all the constraints using our regex.  Of course, the regex is the most crazy part of this whole thing,
 but what it essentially does it grab `id`, `guid` and `optional` from something like `{id:guid?}`.  It will match multiple in something
-like `/api/orders/{status:string}/{top:int?}`.  That's a terrible URL, don't use it in your project.
+like `/api/orders/{status:string}/{top:int?}` (that's a terrible URL, don't use it in your project).
 
 ```cs
 var parameterNamesAndTypes = string.Join(", ", parameters.Select(p => $"{p.Name}: {ConvertRouteConstraintToTsType(p.Constraint)}"));
 ```
 
-This bit makes a string that looks like `status: string, top: number` - these will be the parameters of the method.  Note we convert the route
-types to TS friendly types in a good ol' `switch`.
+This chunk makes a string that looks like `status: string, top?: number` - these will be the parameters of the generated method.  
+Note we convert the route types to TS friendly types using a good ol' `switch` statement, falling back to `any` when they do not match.
 
 ```cs
 var routeWithoutTypeNames = ParamsReplaceRegex.Replace(route.FullRouteTemplate, string.Empty);
@@ -194,7 +196,7 @@ We then just make function contents do a fairly naive string replace of those pa
     `/api/orders/{status}/{top}`.replace(`{status}`, encodeURIComponent(status)).replace(`{top}`, top === undefined ? `` : encodeURIComponent(top));
 ```
 
-We rarely used optional parameters, so it was pretty naive implmentation.
+We rarely used optional parameters, so it was pretty naive implementation.
 
 ```cs
 {% raw %}
@@ -202,13 +204,7 @@ return $"export function {route.Name}({parameterNamesAndTypes}) {{{Environment.N
 {% endraw %}
 ```
 
-This bit glues all the others bits together, and we're done making the function contents.  Let's put it all together:
-
-```cs
-{% raw %}
-    return $"export function {route.Name}({parameterNamesAndTypes}) {{{Environment.NewLine}    { functionContents }{Environment.NewLine}}}";
-{% endraw %}
-```
+This bit glues all the others bits together, and we're done making the function contents.
 
 :boom:
 
