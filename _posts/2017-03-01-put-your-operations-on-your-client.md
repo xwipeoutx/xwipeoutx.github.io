@@ -180,7 +180,7 @@ var functionContents = parameters.Aggregate($"return `{routeWithoutTypeNames}`",
 private static string ReplaceParameter(string current, string paramName, bool isOptional)
 {
     return isOptional
-        ? $"{current}.replace(`/{{{paramName}}}`, {paramName} === undefined ? `/${{encodeURIComponent({paramName})}}` : ``)"
+        ? $"{current}.replace(`/{{{paramName}}}`, {paramName} === undefined ? `` : `/${{encodeURIComponent({paramName})}}`)"
         : $"{current}.replace(`{{{paramName}}}`, encodeURIComponent({paramName}))";
 }
 {% endraw %}
@@ -191,7 +191,7 @@ This part changes our route `/api/orders/{status:string}/{top:int?}` to  `/api/o
 We then just make function contents do a fairly naive string replace of those parameters.  It ends up looking like:
 
 ```
-    `/api/orders/{status}/{top}`.replace(`{status}`, encodeURIComponent(status)).replace(`{top}`, top === undefined ? encodeURIComponent(top) : ``);
+    `/api/orders/{status}/{top}`.replace(`{status}`, encodeURIComponent(status)).replace(`{top}`, top === undefined ? `` : encodeURIComponent(top));
 ```
 
 We rarely used optional parameters, so it was pretty naive implmentation.
