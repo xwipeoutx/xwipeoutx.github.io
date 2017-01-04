@@ -15,7 +15,7 @@ data structures didn't silently fail. In this post, I'll show you how we protect
 
 ## Our application
 
-As before, our application is a WebAPI project with an Angular backend in TypeScript.
+As before, our application is a WebAPI project with an Angular/TypeScript front end.
 
 We fully embraced attribute routing for this project, and put [convention tests](https://github.com/andrewabest/Conventional) in to
 ensure every controller and action contains attribute routes.  Advantage: We know where to look to find URLs! Handy.
