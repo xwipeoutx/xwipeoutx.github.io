@@ -22,7 +22,7 @@ ensure every controller and action contains attribute routes.  Advantage: We kno
 
 ## Our goal
 
-The goal here is to make a module that contains a way to get the URL for each operation.  For static URLs, this is just be a `const`.
+The goal here is to make a module that contains a way to get the URL for each operation.  For static URLs, this is just a `const`.
 
 For dynamic URLs, it is a function that takes in the typed parameters and returns the URL.
 
