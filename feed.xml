@@ -26,7 +26,6 @@
             <link>{{ site.url }}{{ post.url }}</link>
             <guid isPermaLink="true">{{ site.url }}{{ post.url }}</guid>
             <dc:creator><![CDATA[ Steve Leigh ]]></dc:creator>
-            <author>xwipeoutx@gmail.com</author>
         </item>
         {% endunless %}
         {% endfor %}
