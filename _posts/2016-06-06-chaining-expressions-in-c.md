@@ -20,6 +20,7 @@ I recently had to implement a simple report filter that had optional date ranges
 * Clean code - DRY, reusable, terse _et. al._
 
 <!--break-->
+
 This is a faithful reproduction of my filter:
 
 ```c#

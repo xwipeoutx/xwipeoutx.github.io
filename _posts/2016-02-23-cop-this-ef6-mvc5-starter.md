@@ -27,6 +27,7 @@ Unfortunately, people doing the scaffolding for MVC and EF6 seem to have a diffe
 Of course, this works fine for CRUD cases, but the moment you need some business logic, you're in the deep end with no handrail.
 
 <!--break-->
+
 Now, this is a project where the business logic is not so crazy that it warrants going full DDD - but it still deserves to have the domain easily tested and separated from the view, for maintainability.  
 
 I went for a design that gave View Models, Command Handlers, Repositories and Entities, but was limited to Transactional Consistency.  It also allowed fast read-models and flexible Unit of Work usage.  I thought I'd share the layout here.  It is in EF6 code-first on ASP.NET MVC5, and is available on [GitHub](https://github.com/xwipeoutx/CopThis)

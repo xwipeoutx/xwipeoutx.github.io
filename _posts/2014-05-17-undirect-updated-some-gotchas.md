@@ -16,6 +16,7 @@ I ran into a few surprises along the way, and some old frustrations cropped up a
 next person who tries.
 
 <!--break-->
+
 Chrome store feedback
 ---------------------
 Since I'd released this in 2011, with a small update in 2012 to add RegEx to the pattern, I'd basically stopped checking the store's feedback.

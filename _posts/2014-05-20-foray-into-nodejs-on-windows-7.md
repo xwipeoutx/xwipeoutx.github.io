@@ -16,6 +16,7 @@ I found [this neat tutorial](http://cwbuecheler.com/web/tutorials/2013/node-expr
 on that in a subsequent post.  Meanwhile, here's a rundown of getting the basic environment up for those on Windows who are having issues (as I did)
 
 <!--break-->
+
 Installing NodeJS with NPM
 ----------
 I must have had this idea a little while ago, because I thought my first step should be to find out what I've got installed so far - it turns out I have

@@ -13,6 +13,7 @@ There's a few settings I recently tweaked in [WebStorm](http://www.jetbrains.com
 Here's a quick rundown.
  
 <!--break-->
+
 Ensure "Show Reformat Code" is disabled
 ---------------------------------------
 ![Show "Reformat Code" dialog](/images/2014-06-04-reformat-code.png)
