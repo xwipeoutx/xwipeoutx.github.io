@@ -188,7 +188,7 @@ var customer = TestUsers.Customers.JohnSmith;
 Which is more handy than it sounds.
 
 This codegen is relatively easy, if you want to go that route.  We found we didn't use many different users, and since our usernames
-don't change this is probably simplest to just hardcode.
+don't change it would probably have been simpler to just manually add them as we needed them.
 
 All in all, this approach worked fantastically - we set up relationships between users and groups using the same approach,
 and not having to worry about remember user names was great.  Especially during our sprint reviews, being able to easily sign in
