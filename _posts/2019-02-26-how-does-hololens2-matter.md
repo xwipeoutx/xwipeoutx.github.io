@@ -38,7 +38,7 @@ Just for reference, the magic leap has **40° horizontally**, **30° vertically*
 
 The image on [UploadVR](https://uploadvr.com/hololens-2-field-of-view/) is a good view comparing all 3, but I'm gonna do it here in CSS _because I can_ (and so you can view the source to check my measurements for yourself).
 
-<div style="position:relative; width: 600px; height: 320px; text-align: center;">
+<div style="position:relative; width: 600px; height: 320px; text-align: center; background: #1e1e1e">
     <div style="position: absolute; border: 4px solid rgba(255, 255, 0, 0.5); width: 430px; height: 290px; top: 5px; left: 87.5px; color: rgb(255, 255, 0); text-align: center;"><br />Hololens 2</div>
     <div style="position: absolute; border: 4px solid rgba(0, 255, 255, 0.3); width: 400px; height: 300px; top: 0px; left: 100px; color: rgb(0, 255, 255);">Magic Leap</div>
     <div style="position: absolute; border: 4px solid rgba(255, 0, 0, 0.3); width: 300px; height: 175px; top: 62.5px; left: 150px; color: rgb(255, 0, 0);">Hololens 1</div>
