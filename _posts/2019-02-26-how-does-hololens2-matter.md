@@ -66,7 +66,7 @@ To show what I mean, I've done a quick Unity scene - a single sphere with a radi
 
 **Figure**: Comparison of Hololens 1 and 2 rendering from the left and right eyes
 
-The first view will make you feel cross-eyed, with about 20% of the object cut off on each eye.  Comparitively, on the Hololens2, most of the sphere is in view - it will appear close to you, but your eyes still agree on what they're seeting.
+The first view will make you feel cross-eyed, with about 20% of the object cut off on each eye.  Comparitively, on the Hololens2, most of the sphere is in view - it will appear close to you, but your eyes still agree on what they're seeing.
 
 THIS is why the FOV is _so important_ - at 85cm, you can only _just_ reach the holograms.  at 50cm though? It's within reach.  This is a big deal. Arguably the high quality finger/hand recognition wouldn't have worked well without this proximity anyway.
 
