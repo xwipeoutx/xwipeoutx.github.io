@@ -46,9 +46,11 @@ The image on [UploadVR](https://uploadvr.com/hololens-2-field-of-view/) is a goo
 
 The take home: It's pretty much the same as the Magic Leap, and calling it double is pretty misleading.  
 
-It's not even double the perimeter (`95°` vs `144°`) but it **IS** more than 4x the area (`525°²` vs `2236°²`) - but these units don't even make sense* !  **Comparing diagonals gets about 1.5x improvement**, which I think it the more realistic number.
+**Update:** I mistakingly said it is 4x the area (`2236°²`) below - it is actually 2.4x (`1247°²`).  Thanks to [Rafael](https://twitter.com/WithinRafael) for [picking that up](https://twitter.com/WithinRafael/status/1100540006706438144)
 
-_(*ok, so a [square degree](https://en.wikipedia.org/wiki/Square_degree) is apparently a valid measurement, if not SI-compliant.  There are apparently 41,252.96 square degrees in a sphere, so if we stack 19 Hololens 2 units perfectly, we have ourselves a fully Holographic sphere)_
+It's not even double the perimeter (`95°` vs `144°`) but it **IS** ~2.4x the area (`525°²` vs `1247°²`) - but IMHO these units don't even make sense* !  **Comparing diagonals gets about 1.5x improvement**, which I think it the more realistic number.
+
+_(*ok, so a [square degree](https://en.wikipedia.org/wiki/Square_degree) is apparently a valid measurement, if not SI-compliant.  There are apparently 41,252.96 square degrees in a sphere, so if we stack 34 Hololens 2 units perfectly, we have ourselves a fully Holographic sphere)_
 
 So don't get hyped on that!  It's a nice improvement, certainly, but it's not mind blowing as it sounds - and certainly not "double the FOV" unless you _really_ stretch the definition of FOV.
 
@@ -66,7 +68,7 @@ To show what I mean, I've done a quick Unity scene - a single sphere with a radi
 
 **Figure**: Comparison of Hololens 1 and 2 rendering from the left and right eyes
 
-The first view will make you feel cross-eyed, with about 20% of the object cut off on each eye.  Comparitively, on the Hololens2, most of the sphere is in view - it will appear close to you, but your eyes still agree on what they're seeting.
+The first view will make you feel cross-eyed, with about 20% of the object cut off on each eye.  Comparitively, on the Hololens2, most of the sphere is in view - it will appear close to you, but your eyes still agree on what they're seeing.
 
 THIS is why the FOV is _so important_ - at 85cm, you can only _just_ reach the holograms.  at 50cm though? It's within reach.  This is a big deal. Arguably the high quality finger/hand recognition wouldn't have worked well without this proximity anyway.
 
@@ -98,7 +100,7 @@ We're talking nearly a tripling of maximum clock rate, and a huge jump in GPU po
 
 So we've got some actual (comparative) horsepower now.
 
-The flipside? We're having to push many more pixels with the FOV increase.  With a viewing area jump of about 4x, we have about 4x the number of pixels - the equivalent to rendering 4k instead of 1080.
+The flipside? We're having to push many more pixels with the FOV increase.  With a viewing area jump of about 2.4x, we have about 2.4x the number of pixels.
 
 So it's gonna _need_ that extra GPU power.
 
