@@ -23,9 +23,9 @@ I think that captures it all quite nicely - really, you can stop reading here if
 
 **WebXR is a game-changer in immersive technologies, especially in enterprise.**
 
-Why? Read on -but be warned; this is developer centric. You won't find many art or design opinions here.
+Why? Read on - but be warned; this is developer centric. You won't find many art or design opinions here.
 
-<!-- break -->
+<!--break-->
 
 ## In the user's hands, faster
 
