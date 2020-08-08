@@ -43,7 +43,7 @@ It's also much simpler to have multiple streams - eg. "Dev", "Test", "MPE", and 
 
 In general, the move from App Dev to Web Dev means faster iterations, quicker feedback, and costs you less money. Why should immersive tech be any different?
 
-## Easy to pick up, masters and newbies alike
+## Easy to pick up, for experts and newbies alike
 
 Existing non-game developers can jump into WebXR relatively simply - no learning complex editor UIs, just grab a starter, download some assets and render it.
 
