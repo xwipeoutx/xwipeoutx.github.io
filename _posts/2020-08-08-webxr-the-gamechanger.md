@@ -47,11 +47,11 @@ In general, the move from App Dev to Web Dev means faster iterations, quicker fe
 
 Existing non-game developers can jump into WebXR relatively simply - no learning complex editor UIs, just grab a starter, download some assets and render it.
 
-The hello world of Augmented Reality - [show an astronaut in your living room](https://modelviewer.dev/examples/augmented-reality.html) - is, well, easy  - literally some script includes, and a single HTML tag
+The _Hello, World!_ of Augmented Reality - [show an astronaut in your living room](https://modelviewer.dev/examples/augmented-reality.html) - is, well, easy  - literally some script includes, and a single HTML tag
 
 <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
-<model-viewer src="https://stevesspace.com/assets/models/Astronaut.glb" ar ar-modes="webxr scene-viewer quick-look" ar-scale="auto" camera-controls alt="A 3D model of an astronaut" skybox-image="https://stevesspace.com/assets/aircraft_workshop_01_1k.hdr" ios-src="https://stevesspace.com/assets/models/Astronaut.usdz"></model-viewer>
+<model-viewer src="/assets/models/Astronaut.glb" ar ar-modes="webxr scene-viewer quick-look" ar-scale="auto" camera-controls alt="A 3D model of an astronaut" skybox-image="/assets/environments/aircraft_workshop_01_1k.hdr" ios-src="/assets/models/Astronaut.usdz" style="width: 640px; height: 400px;"></model-viewer>
 
 <script src="https://gist.github.com/xwipeoutx/b2b2b189dd037409b41c7b4183613e81.js"></script>
 
@@ -101,11 +101,11 @@ Don't like the physics engine? Switch it out. Don't like multiplayer system? I d
 
 ## Async by default
 
-Loading an asset over HTTP? Guess what, it's asynchronous.  You can't avoid it.
+Loading an asset over HTTPS? Guess what, it's asynchronous.  You can't avoid it.
 
 Game engines generally do avoid it. You have one workflow for embedded content (drag the model into the scene), and one workflow for async content (cry and Google it yet again).
 
-
+Why is this a good thing? Well, it's async by default - so you won't fall into that trap of "Oh wait, I want that asset to be externally, I have to rejig my whole scene".  You're already async.
 
 ## Summing up
 
