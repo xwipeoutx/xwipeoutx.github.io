@@ -9,7 +9,7 @@ tags:
 - VR
 - WebXR
 - BabylonJS
-date: 2020-08-08 21:30:00 +1000
+date: 2020-08-19 9:30:00 +1000
 ---
 Let's start with a message of mine on the [HoloDevelopers Slack Community](https://holodevelopersslack.azurewebsites.net/) I wrote yesterday:
 
