@@ -47,6 +47,11 @@ code.highlighter-rouge {
     background: #f0f0f0;
 }
 
+blockquote {
+    padding-left: 1rem;
+    border-left: 2px solid silver;
+}
+
 /** Layout **/
 
 #site {
